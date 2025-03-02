@@ -23,6 +23,11 @@ shoot={
 ]
 }
 
+[physics]
+
+2d/snap/snap_2d_transforms_to_pixel=false
+2d/canvas_textures/default_texture_filter=2
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
