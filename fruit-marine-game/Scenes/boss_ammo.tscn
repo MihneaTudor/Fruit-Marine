@@ -1,19 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba7c6dvahnwfl"]
+[gd_scene load_steps=8 format=3 uid="uid://ba7c6dvahnwfl"]
 
 [ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_j37sw"]
-[ext_resource type="Texture2D" uid="uid://dxb00ffsbr38y" path="res://Assests/sprites/coin.png" id="2_6ooig"]
+[ext_resource type="Texture2D" uid="uid://cc44ttfrh0qes" path="res://Assests/sprites/world_tileset.png" id="2_3nygq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3uh2"]
-atlas = ExtResource("2_6ooig")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h88x"]
+atlas = ExtResource("2_3nygq")
+region = Rect2(96, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0omj"]
+atlas = ExtResource("2_3nygq")
+region = Rect2(96, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8a2i"]
+atlas = ExtResource("2_3nygq")
+region = Rect2(96, 96, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b6xbd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l3uh2")
+"texture": SubResource("AtlasTexture_2h88x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0omj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8a2i")
 }],
-"loop": true,
+"loop": false,
 "name": &"Bullet\\",
 "speed": 5.0
 }]
@@ -28,6 +42,8 @@ script = ExtResource("1_j37sw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b6xbd")
 animation = &"Bullet\\"
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_avo4d")

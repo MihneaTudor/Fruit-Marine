@@ -1,46 +1,46 @@
 [gd_scene load_steps=9 format=3 uid="uid://dw1chw3ljlto6"]
 
 [ext_resource type="Script" path="res://Scripts/Mob_Movement_base.gd" id="1_vw0hu"]
-[ext_resource type="Texture2D" uid="uid://ds05bxaqfnu4o" path="res://Assests/sprites/knight.png" id="2_6m7a6"]
+[ext_resource type="Texture2D" uid="uid://btcr70q4hm2n6" path="res://Assests/sprites/Boss1_Phase1.png" id="2_q4flp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fhk70"]
-atlas = ExtResource("2_6m7a6")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s80fn"]
+atlas = ExtResource("2_q4flp")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4qnji"]
-atlas = ExtResource("2_6m7a6")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t481"]
+atlas = ExtResource("2_q4flp")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b8mbw"]
-atlas = ExtResource("2_6m7a6")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xungk"]
+atlas = ExtResource("2_q4flp")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8axg6"]
-atlas = ExtResource("2_6m7a6")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mgjx"]
+atlas = ExtResource("2_q4flp")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_50iwu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fhk70")
+"texture": SubResource("AtlasTexture_s80fn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4qnji")
+"texture": SubResource("AtlasTexture_8t481")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b8mbw")
+"texture": SubResource("AtlasTexture_xungk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8axg6")
+"texture": SubResource("AtlasTexture_8mgjx")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2716c"]
-radius = 6.0
+radius = 27.2947
 
 [node name="Boss_Body_teplate" type="RigidBody2D"]
 collision_layer = 4
@@ -53,6 +53,7 @@ scale = Vector2(1, 0.96875)
 sprite_frames = SubResource("SpriteFrames_50iwu")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.620472
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
@@ -65,7 +66,7 @@ target_position = Vector2(0, 60)
 target_position = Vector2(0, -66)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-19, 1)
+position = Vector2(-35, 0)
 rotation = -3.15734
 
 [node name="Timer" type="Timer" parent="."]

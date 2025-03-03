@@ -44,13 +44,14 @@ texture = ExtResource("3_sftiq")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ufoxo")]
 position = Vector2(-238, 164)
-scale = Vector2(2.98788, 2.99503)
+scale = Vector2(3, 3.007)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-12, -12)
 
 [node name="Boss Body Template" parent="." instance=ExtResource("2_hovfv")]
-position = Vector2(273, -27)
+position = Vector2(208.245, -27)
+scale = Vector2(3, 3)
 
 [node name="World Border Down" type="StaticBody2D" parent="."]
 position = Vector2(-157, 118)
