@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://u45cwl43rl3d"]
+[gd_scene load_steps=6 format=3 uid="uid://ba7c6dvahnwfl"]
 
-[ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_byixv"]
-[ext_resource type="Texture2D" uid="uid://dxb00ffsbr38y" path="res://Assests/sprites/coin.png" id="1_wq7nl"]
+[ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_j37sw"]
+[ext_resource type="Texture2D" uid="uid://dxb00ffsbr38y" path="res://Assests/sprites/coin.png" id="2_6ooig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l3uh2"]
-atlas = ExtResource("1_wq7nl")
+atlas = ExtResource("2_6ooig")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b6xbd"]
@@ -22,8 +22,8 @@ animations = [{
 radius = 5.09902
 
 [node name="Glont_Template" type="Area2D"]
-collision_mask = 4
-script = ExtResource("1_byixv")
+collision_mask = 2
+script = ExtResource("1_j37sw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b6xbd")

@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var scene = load("res://Scenes/boss_ammo_type_1.tscn")
+var scene = load("res://Scenes/boss_ammo.tscn")
 const Speed = 30
 var direction = 1
 var max_health = 1

@@ -43,6 +43,7 @@ animations = [{
 radius = 6.0
 
 [node name="Boss_Body_teplate" type="RigidBody2D"]
+collision_layer = 4
 gravity_scale = 0.0
 script = ExtResource("1_vw0hu")
 
