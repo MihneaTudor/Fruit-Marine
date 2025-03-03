@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnwkxyttqpq3a"]
+[gd_scene load_steps=7 format=3 uid="uid://dnwkxyttqpq3a"]
 
+[ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_hhg6o"]
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="1_ufoxo"]
 [ext_resource type="PackedScene" uid="uid://dw1chw3ljlto6" path="res://Scenes/Boss_Template.tscn" id="2_hovfv"]
+[ext_resource type="Texture2D" uid="uid://cp172qw2bl660" path="res://Assests/sprites/HeartFull.png" id="3_sftiq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_60vjs"]
 distance = -77.0
@@ -10,16 +12,35 @@ distance = -77.0
 normal = Vector2(0.00480764, 0.999988)
 distance = -25.9757
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_rxgfc"]
-
 [node name="Node2D" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 119.0
+offset_bottom = 42.0
+alignment = 1
+script = ExtResource("1_hhg6o")
+
+[node name="Heart1" type="TextureRect" parent="UI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_sftiq")
+
+[node name="Heart2" type="TextureRect" parent="UI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_sftiq")
+
+[node name="Heart3" type="TextureRect" parent="UI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_sftiq")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ufoxo")]
 position = Vector2(-292, 154)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -1)
-zoom = Vector2(1.6, 1.6)
+position = Vector2(-12, -12)
 
 [node name="Boss Body Template" parent="." instance=ExtResource("2_hovfv")]
 position = Vector2(273, -27)
@@ -36,22 +57,3 @@ position = Vector2(-137, -178)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Border Up"]
 shape = SubResource("WorldBoundaryShape2D_12j6w")
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-offset_left = -356.0
-offset_top = -201.0
-offset_right = -288.0
-offset_bottom = -182.0
-alignment = 1
-
-[node name="Heart1" type="TextureRect" parent="UI/HBoxContainer"]
-layout_mode = 2
-
-[node name="Heart2" type="TextureRect" parent="UI/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("CanvasTexture_rxgfc")
-
-[node name="Heart3" type="TextureRect" parent="UI/HBoxContainer"]
-layout_mode = 2
