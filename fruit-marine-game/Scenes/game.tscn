@@ -1,22 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnwkxyttqpq3a"]
+[gd_scene load_steps=5 format=3 uid="uid://dnwkxyttqpq3a"]
 
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="1_ufoxo"]
+[ext_resource type="PackedScene" uid="uid://dw1chw3ljlto6" path="res://Scenes/Boss_Template.tscn" id="2_hovfv"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wu427"]
-distance = 14.0
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_60vjs"]
+distance = -77.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_12j6w"]
+normal = Vector2(0.00480764, 0.999988)
+distance = -25.9757
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ufoxo")]
-position = Vector2(-34, -25)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-25, 5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1, 21)
-shape = SubResource("WorldBoundaryShape2D_wu427")
+position = Vector2(-292, 154)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-57, -16)
-zoom = Vector2(2, 2)
+position = Vector2(0, -1)
+zoom = Vector2(1.6, 1.6)
+
+[node name="Boss Body Template" parent="." instance=ExtResource("2_hovfv")]
+position = Vector2(273, -27)
+
+[node name="World Border Down" type="StaticBody2D" parent="."]
+position = Vector2(-157, 118)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Border Down"]
+position = Vector2(9, 0)
+shape = SubResource("WorldBoundaryShape2D_60vjs")
+
+[node name="World Border Up" type="StaticBody2D" parent="."]
+position = Vector2(-137, -178)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Border Up"]
+shape = SubResource("WorldBoundaryShape2D_12j6w")
