@@ -12,23 +12,21 @@ var JumpBuffer = false
 
 var current_health: int
 
-signal health_changed(health)
-
 func _ready():
-	current_health = max_health
-	health_changed.emit(current_health)  # Emit signal for UI
+	current_health = max_health 
+	#health_changed.emit(current_health)  # Emit signal for UI
 	
 func take_damage(amount: int):
 	current_health -= amount
 	current_health = max(0, current_health)  # Prevent negative HP
-	health_changed.emit(current_health)
+	#health_changed.emit(current_health)
 	if current_health == 0:
 		die()
 
 func heal(amount: int):
 	current_health += amount
 	current_health = min(max_health, current_health)  # Prevent overhealing
-	health_changed.emit(current_health)
+	#health_changed.emit(current_health)
 	
 func _physics_process(delta: float) -> void:
 	$Timer.wait_time = shootTime
@@ -80,5 +78,5 @@ func shoot():
 	$Timer.start()
 	
 func die():
-	get_node("CollisionShape2D").disabled = true 
+	get_node("CollisionShape2D").queue_free()
 	

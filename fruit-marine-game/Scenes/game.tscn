@@ -16,6 +16,7 @@ distance = -25.9757
 [node name="Node2D" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI" node_paths=PackedStringArray("player")]
 offset_left = 10.0
