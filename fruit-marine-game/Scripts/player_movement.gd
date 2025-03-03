@@ -5,10 +5,31 @@ var scene = load("res://Scenes/glont_template.tscn")
 @export var SPEED: float = 300.0
 @export var JUMP_VELOCITY: float = -400.0
 @export var  shootTime: float = 0.1
+@export var max_health: int = 3
 
 var orientation = 1
 var JumpBuffer = false
 
+var current_health: int
+
+signal health_changed(health)
+
+func _ready():
+	current_health = max_health
+	health_changed.emit(current_health)  # Emit signal for UI
+	
+func take_damage(amount: int):
+	current_health -= amount
+	current_health = max(0, current_health)  # Prevent negative HP
+	health_changed.emit(current_health)
+	if current_health == 0:
+		die()
+
+func heal(amount: int):
+	current_health += amount
+	current_health = min(max_health, current_health)  # Prevent overhealing
+	health_changed.emit(current_health)
+	
 func _physics_process(delta: float) -> void:
 	$Timer.wait_time = shootTime
 	
@@ -57,3 +78,7 @@ func shoot():
 	owner.add_child(b)
 	b.global_transform = $Marker2D.global_transform
 	$Timer.start()
+	
+func die():
+	get_node("CollisionShape2D").disabled = true 
+	

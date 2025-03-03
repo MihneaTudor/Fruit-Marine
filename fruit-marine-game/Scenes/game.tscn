@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnwkxyttqpq3a"]
+[gd_scene load_steps=6 format=3 uid="uid://dnwkxyttqpq3a"]
 
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="1_ufoxo"]
 [ext_resource type="PackedScene" uid="uid://dw1chw3ljlto6" path="res://Scenes/Boss_Template.tscn" id="2_hovfv"]
@@ -9,6 +9,8 @@ distance = -77.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_12j6w"]
 normal = Vector2(0.00480764, 0.999988)
 distance = -25.9757
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rxgfc"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -34,3 +36,22 @@ position = Vector2(-137, -178)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Border Up"]
 shape = SubResource("WorldBoundaryShape2D_12j6w")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = -356.0
+offset_top = -201.0
+offset_right = -288.0
+offset_bottom = -182.0
+alignment = 1
+
+[node name="Heart1" type="TextureRect" parent="UI/HBoxContainer"]
+layout_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="UI/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("CanvasTexture_rxgfc")
+
+[node name="Heart3" type="TextureRect" parent="UI/HBoxContainer"]
+layout_mode = 2
