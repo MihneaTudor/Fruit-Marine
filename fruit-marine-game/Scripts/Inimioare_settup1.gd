@@ -4,8 +4,8 @@ extends HBoxContainer
 @export var HeartEmpty: Texture
 @export var player: CharacterBody2D  # Assign player in the editor
 
-func _ready():
-	player.health_changed.connect(update_hearts)
+func _process(delta: float) -> void:
+	#player.get_script().health_changed.connect(update_hearts)
 	update_hearts(player.current_health)
 
 func update_hearts(health):
