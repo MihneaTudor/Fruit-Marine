@@ -7,6 +7,7 @@ var scene = load("res://Scenes/glont_template.tscn")
 @export var  shootTime: float = 0.1
 
 var orientation = 1
+var JumpBuffer = false
 
 func _physics_process(delta: float) -> void:
 	$Timer.wait_time = shootTime
@@ -17,8 +18,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shoot") and $Timer.is_stopped():
 		shoot()
 	
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept"):
+		$JumpBuffer.start()
+	if not $JumpBuffer.is_stopped() and is_on_floor():
+		$JumpBuffer.stop()
 		velocity.y = JUMP_VELOCITY
+		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
 	#Handle Animations
