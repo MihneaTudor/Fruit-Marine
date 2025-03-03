@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c780esabjvyoo"]
+
+[ext_resource type="Texture2D" uid="uid://dxb00ffsbr38y" path="res://Assests/sprites/coin.png" id="1_mxunj"]
+[ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_t1pyy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8v001"]
+radius = 5.0
+
+[node name="Boss_Ammo-Type1" type="Area2D"]
+script = ExtResource("1_t1pyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_8v001")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mxunj")
+region_enabled = true
+region_rect = Rect2(80, 0, 15, 15)

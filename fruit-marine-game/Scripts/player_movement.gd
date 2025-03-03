@@ -3,7 +3,7 @@ extends CharacterBody2D
 var scene = load("res://Scenes/glont_template.tscn")
 
 @export var SPEED: float = 300.0
-@export var JUMP_VELOCITY: float = -400.0
+@export var JUMP_VELOCITY: float = -600.0
 @export var  shootTime: float = 0.1
 @export var max_health: int = 3
 
@@ -36,6 +36,8 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("shoot") and $Timer.is_stopped():
 		shoot()
+	if Input.is_action_pressed("Down"):
+		drop()
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		$JumpBuffer.start()
@@ -71,7 +73,6 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	$TopSprite.play("Shooting")
-	
 	var b = scene.instantiate()
 	owner.add_child(b)
 	b.global_transform = $Marker2D.global_transform
@@ -80,3 +81,5 @@ func shoot():
 func die():
 	get_node("CollisionShape2D").queue_free()
 	
+func drop():
+	position.y += 1

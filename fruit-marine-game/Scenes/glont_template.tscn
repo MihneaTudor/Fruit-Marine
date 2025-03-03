@@ -22,7 +22,6 @@ animations = [{
 radius = 5.09902
 
 [node name="Glont_Template" type="Area2D"]
-collision_mask = 2147483648
 script = ExtResource("1_byixv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
