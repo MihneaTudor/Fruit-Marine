@@ -2,12 +2,15 @@ extends CharacterBody2D
 
 var scene = load("res://Scenes/glont_template.tscn")
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var SPEED: float = 300.0
+@export var JUMP_VELOCITY: float = -400.0
+@export var  shootTime: float = 0.1
 
 var orientation = 1
 
 func _physics_process(delta: float) -> void:
+	$Timer.wait_time = shootTime
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
@@ -19,18 +22,22 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
 	#Handle Animations
-	if $Timer.is_stopped():
+	if $TopSprite.animation == "Shooting" and $TopSprite.frame == 3:
 		$TopSprite.play("Idle")
-	
+		
 	
 	if direction != 0 and direction != orientation:
 		self.scale.x *= -1
 		orientation *= -1
 		
-	if direction == 0:
-		$BottomSprite.play("Idle")
+	if is_on_floor():
+		if direction == 0:
+			$BottomSprite.play("Idle")
+		else:
+			$BottomSprite.play("Running")
 	else:
-		$BottomSprite.play("Running")
+		$BottomSprite.play("Jumping")
+		
 	
 	if direction:
 		velocity.x = direction * SPEED
