@@ -3,13 +3,12 @@ extends CharacterBody2D
 var scene = load("res://Scenes/glont_template.tscn")
 
 @export var SPEED: float = 300.0
-@export var JUMP_VELOCITY: float = -600.0
+@export var JUMP_VELOCITY: float = -700.0
 @export var  shootTime: float = 0.1
 @export var max_health: int = 3
 
 var orientation = 1
 var JumpBuffer = false
-
 var current_health: int
 
 func _ready():
@@ -82,4 +81,4 @@ func die():
 	get_node("CollisionShape2D").queue_free()
 	
 func drop():
-	position.y += 1
+	position.y += 3

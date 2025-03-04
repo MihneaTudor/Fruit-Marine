@@ -1,25 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw1chw3ljlto6"]
+[gd_scene load_steps=9 format=3 uid="uid://bvbtnribt1fc2"]
 
-[ext_resource type="Script" path="res://Scripts/Mob_Movement_base.gd" id="1_vw0hu"]
-[ext_resource type="Texture2D" uid="uid://btcr70q4hm2n6" path="res://Assests/sprites/Boss1_Phase1.png" id="2_q4flp"]
+[ext_resource type="Texture2D" uid="uid://btcr70q4hm2n6" path="res://Assests/sprites/Boss1_Phase1.png" id="1_b78xg"]
+[ext_resource type="Script" path="res://Scripts/Mob_Movement_base.gd" id="1_x6lq7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s80fn"]
-atlas = ExtResource("2_q4flp")
+atlas = ExtResource("1_b78xg")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t481"]
-atlas = ExtResource("2_q4flp")
+atlas = ExtResource("1_b78xg")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xungk"]
-atlas = ExtResource("2_q4flp")
+atlas = ExtResource("1_b78xg")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mgjx"]
-atlas = ExtResource("2_q4flp")
+atlas = ExtResource("1_b78xg")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_63nvm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xobc3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -39,26 +39,24 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ci2o8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ys05d"]
 radius = 27.2947
 
-[node name="Boss_Body_teplate" type="RigidBody2D"]
-collision_layer = 4
-gravity_scale = 0.0
-script = ExtResource("1_vw0hu")
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_x6lq7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 5
 position = Vector2(1, 0)
 scale = Vector2(3.096, 3)
-sprite_frames = SubResource("SpriteFrames_63nvm")
+sprite_frames = SubResource("SpriteFrames_xobc3")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 4)
 scale = Vector2(3, 3)
-shape = SubResource("CircleShape2D_ci2o8")
+shape = SubResource("CircleShape2D_ys05d")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(56, 3)

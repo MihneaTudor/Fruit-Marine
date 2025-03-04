@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://c45iggowdq5s" path="res://Assests/sprites/platforms.png" id="1_iuu65"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_x2shy"]
-a = Vector2(-10, -1)
-b = Vector2(14, 0)
+a = Vector2(-12, -7)
+b = Vector2(42, -7)
 
 [node name="Platform_Template" type="AnimatableBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
+position = Vector2(-2, 4)
 shape = SubResource("SegmentShape2D_x2shy")
 one_way_collision = true
 
