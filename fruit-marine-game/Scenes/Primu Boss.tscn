@@ -56,7 +56,7 @@ autoplay = "idle"
 frame_progress = 0.620472
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(1, 4)
 shape = SubResource("CircleShape2D_2716c")
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
@@ -68,6 +68,14 @@ target_position = Vector2(0, -66)
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-35, 0)
 rotation = -3.15734
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(-36, 9.53674e-07)
+rotation = 2.4246
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(-36, 0)
+rotation = -2.29181
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.53

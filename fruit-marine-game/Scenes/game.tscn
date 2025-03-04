@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_hhg6o"]
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="1_ufoxo"]
-[ext_resource type="PackedScene" uid="uid://dw1chw3ljlto6" path="res://Scenes/Boss_Template.tscn" id="2_hovfv"]
+[ext_resource type="PackedScene" uid="uid://dw1chw3ljlto6" path="res://Scenes/Primu Boss.tscn" id="2_hovfv"]
 [ext_resource type="Texture2D" uid="uid://wbhox3r32lx2" path="res://Assests/sprites/HeartEmpty.png" id="3_i7jr5"]
 [ext_resource type="Texture2D" uid="uid://bmm6gw6xdlguc" path="res://Assests/sprites/HeartFull.png" id="3_sftiq"]
 [ext_resource type="PackedScene" uid="uid://610qve36s4li" path="res://Scenes/platform_template.tscn" id="6_e3xop"]
