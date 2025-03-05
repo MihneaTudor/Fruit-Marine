@@ -32,10 +32,38 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		$CollisionShape2D.position.y = 3
+		$CollisionShape2D.shape.size.y = 23.5
+	else:
+		
+		if $CollisionShape2D.shape.size.y == 23.5 and not Input.is_action_just_released("Crouch"):
+			position.y -= 9.25 * 3
+		$CollisionShape2D.position.y = 0.5
+		$CollisionShape2D.shape.size.y = 47
+		
+		if Input.is_action_pressed("Down") and not Input.is_action_pressed("Crouch") and not Input.is_action_just_released("Crouch"	):
+			$CollisionShape2D.position.y = 3
+			$CollisionShape2D.shape.size.y = 23.5
+			position.y += 9.25 * 3
+			
+		
+	if Input.is_action_pressed("Crouch") and is_on_floor():
+		$BottomSprite.play("Jumping")
+		$CollisionShape2D.position.y = 3
+		$CollisionShape2D.shape.size.y = 23.5
+		position.y += 9.25 * 3
+		
+	if Input.is_action_just_released("Crouch") and is_on_floor():
+		$CollisionShape2D.position.y = 0.5
+		$CollisionShape2D.shape.size.y = 47
+		position.y -= 9.25 * 3
+		$BottomSprite.play("Idle")
+		
 		
 	if Input.is_action_pressed("shoot") and $Timer.is_stopped():
 		shoot()
-	if Input.is_action_pressed("Down"):
+		
+	if Input.is_action_pressed("Down") and is_on_floor():
 		drop()
 	
 	if Input.is_action_just_pressed("ui_accept"):
@@ -55,7 +83,7 @@ func _physics_process(delta: float) -> void:
 		self.scale.x *= -1
 		orientation *= -1
 		
-	if is_on_floor():
+	if is_on_floor() and not Input.is_action_pressed("Crouch") and not Input.is_action_pressed("Down"):
 		if direction == 0:
 			$BottomSprite.play("Idle")
 		else:

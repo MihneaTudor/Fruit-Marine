@@ -112,13 +112,13 @@ radius = 30.6685
 script = ExtResource("1_x6lq7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 4
+z_index = 5
 position = Vector2(1, 0)
 scale = Vector2(3.096, 3)
 sprite_frames = SubResource("SpriteFrames_xobc3")
 animation = &"Shooting"
 autoplay = "idle"
-frame_progress = 0.547988
+frame_progress = 0.288636
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 4)
@@ -126,17 +126,17 @@ scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_ys05d")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(56, -24.775)
+position = Vector2(56, 3)
 rotation = -3.15734
 scale = Vector2(3, 3)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-76, -24.775)
+position = Vector2(-76, 2)
 rotation = 2.87034
 scale = Vector2(3, 3)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(-75, -24.775)
+position = Vector2(-75, -1.90735e-06)
 rotation = -2.87325
 scale = Vector2(3, 3)
 
@@ -149,5 +149,5 @@ wait_time = 5.0
 one_shot = true
 
 [node name="StaggerTime" type="Timer" parent="."]
-wait_time = 6.5
+wait_time = 5.0
 one_shot = true

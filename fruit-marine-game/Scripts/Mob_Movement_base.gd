@@ -5,22 +5,48 @@ const Speed = 30
 var gravity = ProjectSettings.get("physics/2d/default_gravity")  # Get Godot's gravity
 var direction = 1
 var max_health = 10
-var current_health: int
+var current_health: float
 var layer=1
 var timer
 var Jump_rand
 var t1
 var can_drop_to_hell = false
+var can_shoot = true
+var is_stageered = false
+var already_staggered = false
 var layer2
 
 func _process(delta: float) -> void:
-	if $Timer.is_stopped() and current_health>=(max_health/2):
-		shoot()	
-	else: if $Timer.is_stopped() and current_health<max_health/2:
-		shoot1()
-		shoot2()
-		shoot3()
+	if $StaggerTime.is_stopped() and is_stageered:
+		is_stageered = false
+		$AnimatedSprite2D.play("idle")
+	if is_stageered:
+		return
+	if current_health<=max_health/2 and not already_staggered:
+		already_staggered = true
+		is_stageered = true
+		$AnimatedSprite2D.play("Stagger")
+		$StaggerTime.start()
+		return
+	
+	
+	if $Timer.is_stopped():
+		$AnimatedSprite2D.play("Shooting")
 		$Timer.start()
+		can_shoot = true
+	
+	if $AnimatedSprite2D.animation == "Shooting" and $AnimatedSprite2D.frame == 3 and can_shoot:
+		if  current_health>=(max_health/2):
+			shoot()	
+		elif current_health<max_health/2:
+			print("Mwah")
+			shoot1()
+			shoot2()
+			shoot3()
+		can_shoot = false
+			
+	if $AnimatedSprite2D.animation == "Shooting" and $AnimatedSprite2D.frame == 6:
+		$AnimatedSprite2D.play("idle")
 	
 				
 func _physics_process(delta: float) -> void:
@@ -34,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		layer2 = (layering + layer) % 3
 		print(layer2)
 		if layer2>layer and is_on_floor():
-			jump(700+(layer2-layer-1)*220)
+			jump(700+(layer2-layer-1)*280)
 			layer=layer2
 		if layer2<layer and is_on_floor():
 			drop()
@@ -48,6 +74,7 @@ func _physics_process(delta: float) -> void:
 	
 func _ready():
 	current_health = max_health 
+	#current_health = max_health / 2 - 1
 	var t1 = randi() % 3
 	layer = 1
 	$Timer2.start()

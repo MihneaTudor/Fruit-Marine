@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://u45cwl43rl3d"]
 
 [ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_byixv"]
-[ext_resource type="Texture2D" uid="uid://dxb00ffsbr38y" path="res://Assests/sprites/coin.png" id="1_wq7nl"]
+[ext_resource type="Texture2D" uid="uid://bbetrep62jy63" path="res://Assests/sprites/Apple.png" id="2_4jeld"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3uh2"]
-atlas = ExtResource("1_wq7nl")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ofbw"]
+atlas = ExtResource("2_4jeld")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b6xbd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l3uh2")
+"texture": SubResource("AtlasTexture_0ofbw")
 }],
 "loop": true,
-"name": &"Bullet\\",
+"name": &"Bullet",
 "speed": 5.0
 }]
 
@@ -24,10 +24,11 @@ radius = 5.09902
 [node name="Glont_Template" type="Area2D"]
 collision_mask = 4
 script = ExtResource("1_byixv")
+speed = 250
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b6xbd")
-animation = &"Bullet\\"
+animation = &"Bullet"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_avo4d")
