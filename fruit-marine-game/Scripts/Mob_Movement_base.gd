@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var tree = load("res://Scenes/Tree.tscn")
 var scene = load("res://Scenes/boss_ammo.tscn")
-var light = load("res://Scenes/White circle.tscn")
+var light = load("res://Scenes/white_circle.tscn")
 const Speed = 30
 var gravity = ProjectSettings.get("physics/2d/default_gravity")  # Get Godot's gravity
 var direction = 1
@@ -146,7 +146,6 @@ func die():
 	a.global_transform *= 4
 	Light.global_position= pos
 	owner.add_child(a)
-	owner.add_child(Light)
 	a.global_position=pos
 		
 	

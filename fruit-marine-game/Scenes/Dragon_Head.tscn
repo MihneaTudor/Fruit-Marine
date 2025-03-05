@@ -1,54 +1,54 @@
 [gd_scene load_steps=17 format=3 uid="uid://covovdnt10k1g"]
 
-[ext_resource type="Script" path="res://Scripts/Mob_Movement_base.gd" id="1_sxq5m"]
-[ext_resource type="Texture2D" uid="uid://btcr70q4hm2n6" path="res://Assests/sprites/Boss1_Phase1.png" id="2_l0ewp"]
+[ext_resource type="Script" path="res://Scripts/dragon_head.gd" id="1_w1wde"]
+[ext_resource type="Texture2D" uid="uid://btcr70q4hm2n6" path="res://Assests/sprites/Boss1_Phase1.png" id="2_a852a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xl20k"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2dt1"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lo7d0"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(128, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbiui"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(192, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ft68"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(256, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sy7y0"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(320, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhm4e"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0oqa"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gytwy"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xl8v"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0p7e"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jlo0"]
-atlas = ExtResource("2_l0ewp")
+atlas = ExtResource("2_a852a")
 region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xobc3"]
@@ -105,16 +105,17 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkafb"]
-size = Vector2(38.6667, 53.6667)
+[sub_resource type="CircleShape2D" id="CircleShape2D_f8wfe"]
+radius = 26.3418
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(14, 17)
 collision_layer = 5
-script = ExtResource("1_sxq5m")
+script = ExtResource("1_w1wde")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
-position = Vector2(1, 0)
+position = Vector2(6, 38)
 scale = Vector2(3.096, 3)
 sprite_frames = SubResource("SpriteFrames_xobc3")
 animation = &"Shooting"
@@ -122,38 +123,26 @@ autoplay = "idle"
 frame_progress = 0.547988
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11, 12.5)
+position = Vector2(0, 53)
 scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_gkafb")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(56, -24.775)
-rotation = -3.15734
-scale = Vector2(3, 3)
-
-[node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-76, -24.775)
-rotation = 2.87034
-scale = Vector2(3, 3)
-
-[node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(-75, -24.775)
-rotation = -2.87325
-scale = Vector2(3, 3)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
-one_shot = true
+shape = SubResource("CircleShape2D_f8wfe")
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 15.0
 one_shot = true
-
-[node name="StaggerTime" type="Timer" parent="."]
-wait_time = 6.5
-one_shot = true
+autostart = true
 
 [node name="Timer_Intro" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Aim_assist" type="Marker2D" parent="."]
+position = Vector2(-57, 66)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Verif" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
