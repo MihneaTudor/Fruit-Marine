@@ -2,17 +2,21 @@ extends CharacterBody2D
 
 var scene = load("res://Scenes/glont_template.tscn")
 
+
 @export var SPEED: float = 300.0
 @export var JUMP_VELOCITY: float = -700.0
 @export var  shootTime: float = 0.1
 @export var max_health: int = 3
+
+@onready var detection_area = $Area2D  # Reference to the Area2D child
 
 var orientation = 1
 var JumpBuffer = false
 var current_health: int
 
 func _ready():
-	current_health = max_health 
+	current_health = max_health
+	detection_area.connect("area_entered", _on_area_entered) 
 	#health_changed.emit(current_health)  # Emit signal for UI
 	
 func take_damage(amount: int):
@@ -21,21 +25,30 @@ func take_damage(amount: int):
 	#health_changed.emit(current_health)
 	if current_health == 0:
 		die()
-
+func _on_area_entered(area):
+	if Input.is_action_pressed("Parry") and area.name.begins_with("BossAmmo"):
+		area.rotation_degrees += 180
+		
+	print("Detected an area: ", area.name)
+	
 func heal(amount: int):
 	current_health += amount
 	current_health = min(max_health, current_health)  # Prevent overhealing
 	#health_changed.emit(current_health)
-	
+
 func _physics_process(delta: float) -> void:
+	if is_on_floor() and not $Timer_Intro.is_stopped():
+		$BottomSprite.play("Idle")
+	if not $Timer_Intro.is_stopped():
+		return
 	$Timer.wait_time = shootTime
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		$CollisionShape2D.position.y = 3
 		$CollisionShape2D.shape.size.y = 23.5
-	else:
-		
+	
+	else:	
 		if $CollisionShape2D.shape.size.y == 23.5 and not Input.is_action_just_released("Crouch"):
 			position.y -= 9.25 * 3
 		$CollisionShape2D.position.y = 0.5
@@ -44,9 +57,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("Down") and not Input.is_action_pressed("Crouch") and not Input.is_action_just_released("Crouch"	):
 			$CollisionShape2D.position.y = 3
 			$CollisionShape2D.shape.size.y = 23.5
-			position.y += 9.25 * 3
+		position.y += 9.25 * 3
+	
 			
-		
 	if Input.is_action_pressed("Crouch") and is_on_floor():
 		$BottomSprite.play("Jumping")
 		$CollisionShape2D.position.y = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkayc8u0sdaud"]
+[gd_scene load_steps=25 format=3 uid="uid://dkayc8u0sdaud"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_5al3x"]
 [ext_resource type="Texture2D" uid="uid://bulov4y5gs8m5" path="res://Assests/sprites/Bottom_SpriteSheet.png" id="2_gpwtj"]
@@ -150,6 +150,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osge1"]
 size = Vector2(20, 47)
 
+[sub_resource type="GDScript" id="GDScript_0daui"]
+script/source = "extends Area2D
+
+func _ready():
+	connect(\"area_entered\", _on_area_entered)
+
+func _on_area_entered(area):
+	print(\"Area entered: \", area.name)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdvwi"]
+size = Vector2(3, 47)
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(0, 5)
 collision_layer = 2
@@ -182,3 +195,17 @@ one_shot = true
 [node name="JumpBuffer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="Timer_Intro" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-32, 0)
+scale = Vector2(4.16642, 1.02668)
+script = SubResource("GDScript_0daui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(11.5, 0.5)
+shape = SubResource("RectangleShape2D_pdvwi")

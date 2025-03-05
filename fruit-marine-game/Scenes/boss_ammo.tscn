@@ -21,7 +21,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_avo4d"]
 radius = 9.0
 
-[node name="Glont_Template" type="Area2D"]
+[node name="boss_ammo" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_j37sw")
 speed = 150
@@ -31,6 +31,7 @@ sprite_frames = SubResource("SpriteFrames_b6xbd")
 animation = &"Bullet"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_avo4d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

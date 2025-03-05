@@ -15,11 +15,17 @@ var can_shoot = true
 var is_stageered = false
 var already_staggered = false
 var layer2
+var bullet_counter = 0
 
 func _process(delta: float) -> void:
 	if $StaggerTime.is_stopped() and is_stageered:
 		is_stageered = false
 		$AnimatedSprite2D.play("idle")
+	if not $Timer_Intro.is_stopped():
+		if $Timer_Intro.time_left == 0.75:
+			$Timer.start()
+			can_shoot=true
+		return
 	if is_stageered:
 		return
 	if current_health<=max_health/2 and not already_staggered:
@@ -50,11 +56,15 @@ func _process(delta: float) -> void:
 	
 				
 func _physics_process(delta: float) -> void:
+	if not $Timer_Intro.is_stopped:
+		return
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if is_on_floor() and can_drop_to_hell:
 		drop()
 		can_drop_to_hell=false
+	if is_stageered:
+		return
 	if $Timer2.is_stopped():
 		var layering = randi() % 2 + 1
 		layer2 = (layering + layer) % 3
@@ -96,16 +106,22 @@ func shoot():
 	$Timer.start()
 func shoot1():
 	var b = scene.instantiate()
+	b.name="BossAmmo" + str(bullet_counter)
+	bullet_counter+=1
 	owner.add_child(b)
 	b.global_transform = $Marker2D.global_transform
 
 func shoot2():	
 	var b = scene.instantiate()
+	b.name="BossAmmo" + str(bullet_counter)
+	bullet_counter+=1
 	owner.add_child(b)
 	b.global_transform = $Marker2D2.global_transform
 
 func shoot3():	
 	var b = scene.instantiate()
+	b.name="BossAmmo" + str(bullet_counter)
+	bullet_counter+=1
 	owner.add_child(b)
 	b.global_transform = $Marker2D3.global_transform
 
