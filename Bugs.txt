@@ -1,5 +1,5 @@
 Bugs:
 
-Hitboxes pre-after-crouch/jumps - de verificat cu hitboxes on cand jocul este rulat
-De verificat parry- interactiune cu world borders- TEORETIC ok
+Zero  boule, ZEROOOO.
+Futu ti mortii tai de bulangiu, imi faci bugguri in cod
 
