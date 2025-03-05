@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var scene = load("res://Scenes/glont_template.tscn")
+var bullet = load("res://Scenes/glont_template.tscn")
 
 
 @export var SPEED: float = 300.0
@@ -26,7 +26,7 @@ func take_damage(amount: int):
 	if current_health == 0:
 		die()
 func _on_area_entered(area):
-	if $TopSprite.animation == "Parry" and $TopSprite.frame < 3 and area.name.begins_with("BossAmmo"):
+	if $TopSprite.animation == "Parry" and $TopSprite.frame < 3 and area.name.begins_with("BossAmmo2"):
 		area.rotation_degrees += 180
 		area.collision_mask = 3
 		
@@ -119,7 +119,7 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	$TopSprite.play("Shooting")
-	var b = scene.instantiate()
+	var b = bullet.instantiate()
 	owner.add_child(b)
 	b.global_transform = $Marker2D.global_transform
 	$Timer.start()

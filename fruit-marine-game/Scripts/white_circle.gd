@@ -1,15 +1,7 @@
-extends Sprite2D
-
+extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if not $Timer.is_stopped:
-		scale*=1.2
-	else:
-		queue_free()
-		
+	var tween = create_tween()
+	tween.tween_property($Sprite2D, "scale", 30 * Vector2(1, 1), .75)
+	tween.tween_property($Sprite2D, "modulate", Color(1, 1, 1, 0), 2)
