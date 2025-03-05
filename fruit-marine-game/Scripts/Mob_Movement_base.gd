@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var tree = load("res://Scenes/Tree.tscn")
 var scene = load("res://Scenes/boss_ammo.tscn")
 const Speed = 30
 var gravity = ProjectSettings.get("physics/2d/default_gravity")  # Get Godot's gravity
@@ -28,7 +29,7 @@ func _process(delta: float) -> void:
 		return
 	if is_stageered:
 		return
-	if current_health<=max_health/2 and not already_staggered:
+	if current_health<=max_health/2 and not already_staggered and is_on_floor():
 		already_staggered = true
 		is_stageered = true
 		$AnimatedSprite2D.play("Stagger")
@@ -58,6 +59,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not $Timer_Intro.is_stopped:
 		return
+	if current_health==0:
+		die()
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if is_on_floor() and can_drop_to_hell:
@@ -129,11 +132,20 @@ func take_damage(amount: int):
 	current_health -= amount
 	current_health = max(0, current_health)  # Prevent negative HP
 	#health_changed.emit(current_health)
-	if current_health == 0:
-		print("A CRAPAT VITA")
+
 		
 func drop():
 	position.y += 1
 	
+func die():
+	var pos = global_position 
+	queue_free()
+	var a = tree.instantiate()
+	a.global_transform *= 4
+	owner.add_child(a)
+	a.global_position=pos
+		
+	
+		
 func jump(jump_velocity: float):
 	velocity.y=-jump_velocity;
