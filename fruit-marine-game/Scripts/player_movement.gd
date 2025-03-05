@@ -26,7 +26,7 @@ func take_damage(amount: int):
 	if current_health == 0:
 		die()
 func _on_area_entered(area):
-	if Input.is_action_pressed("Parry") and area.name.begins_with("BossAmmo"):
+	if $TopSprite.animation == "Parry" and $TopSprite.frame < 3 and area.name.begins_with("BossAmmo"):
 		area.rotation_degrees += 180
 		area.collision_mask = 3
 		
@@ -89,6 +89,11 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
 	#Handle Animations
+	if Input.is_action_just_pressed("Parry"):
+		$TopSprite.play("Parry")
+	if $TopSprite.animation == "Parry" and $TopSprite.frame == 3:
+		$TopSprite.play("Idle")
+	
 	if $TopSprite.animation == "Shooting" and $TopSprite.frame == 3:
 		$TopSprite.play("Idle")
 		
