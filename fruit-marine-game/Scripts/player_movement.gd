@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("Down") and not Input.is_action_pressed("Crouch") and not Input.is_action_just_released("Crouch"	):
 			$CollisionShape2D.position.y = 3
 			$CollisionShape2D.shape.size.y = 23.5
-		position.y += 9.25 * 3
+			position.y += 9.25 * 3
 	
 			
 	if Input.is_action_pressed("Crouch") and is_on_floor():
