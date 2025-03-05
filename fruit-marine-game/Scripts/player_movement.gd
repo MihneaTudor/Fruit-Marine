@@ -28,6 +28,7 @@ func take_damage(amount: int):
 func _on_area_entered(area):
 	if Input.is_action_pressed("Parry") and area.name.begins_with("BossAmmo"):
 		area.rotation_degrees += 180
+		area.collision_mask = 3
 		
 	print("Detected an area: ", area.name)
 	
