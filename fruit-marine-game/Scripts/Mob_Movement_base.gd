@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
 var tree = load("res://Scenes/Tree.tscn")
-var scene = load("res://Scenes/boss_ammo.tscn")
-var light = load("res://Scenes/white_circle.tscn")
+
+
+var bullet = load("res://Scenes/boss_ammo.tscn")
+var bullet_big = load("res://Scenes/boss_ammo_big.tscn")
+var bullet_parry = load("res://Scenes/boss_ammo_parry.tscn")
+var light = load("res://Scenes/White Circle.tscn")
+
 const Speed = 30
 var gravity = ProjectSettings.get("physics/2d/default_gravity")  # Get Godot's gravity
 var direction = 1
@@ -18,8 +23,15 @@ var is_stageered = false
 var already_staggered = false
 var layer2
 var bullet_counter = 0
+var dead = false
 
 func _process(delta: float) -> void:
+	if dead:
+		$AnimatedSprite2D.play("Stagger")
+		if $Timer_Outro.is_stopped():
+			die()
+		return
+	
 	if $StaggerTime.is_stopped() and is_stageered:
 		is_stageered = false
 		$AnimatedSprite2D.play("idle")
@@ -58,10 +70,17 @@ func _process(delta: float) -> void:
 	
 				
 func _physics_process(delta: float) -> void:
+	if dead:
+		$AnimatedSprite2D.play("Stagger")
+		if $Timer_Outro.is_stopped():
+			die()
+		return
+		
 	if not $Timer_Intro.is_stopped:
 		return
 	if current_health==0:
-		die()
+		dead = true
+		$Timer_Outro.start()
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if is_on_floor() and can_drop_to_hell:
@@ -109,22 +128,43 @@ func shoot():
 	t1=randi()%3
 	$Timer.start()
 func shoot1():
-	var b = scene.instantiate()
-	b.name="BossAmmo" + str(bullet_counter)
+	var rand = randi() % 3
+	var b 
+	if rand == 0:
+		b= bullet.instantiate()
+	if rand == 1:
+		b= bullet_big.instantiate()
+	if rand == 2:
+		b= bullet_parry.instantiate()
+	b.name="BossAmmo" + str(rand) + str(bullet_counter)
 	bullet_counter+=1
 	owner.add_child(b)
 	b.global_transform = $Marker2D.global_transform
 
 func shoot2():	
-	var b = scene.instantiate()
-	b.name="BossAmmo" + str(bullet_counter)
+	var rand = randi() % 3
+	var b 
+	if rand == 0:
+		b= bullet.instantiate()
+	if rand == 1:
+		b= bullet.instantiate()
+	if rand == 2:
+		b= bullet_parry.instantiate()
+	b.name="BossAmmo" + str(rand) + str(bullet_counter)
 	bullet_counter+=1
 	owner.add_child(b)
 	b.global_transform = $Marker2D2.global_transform
 
 func shoot3():	
-	var b = scene.instantiate()
-	b.name="BossAmmo" + str(bullet_counter)
+	var rand = randi() % 3
+	var b 
+	if rand == 0:
+		b= bullet.instantiate()
+	if rand == 1:
+		b= bullet.instantiate()
+	if rand == 2:
+		b= bullet_parry.instantiate()
+	b.name="BossAmmo" + str(rand) + str(bullet_counter)
 	bullet_counter+=1
 	owner.add_child(b)
 	b.global_transform = $Marker2D3.global_transform
@@ -143,7 +183,7 @@ func die():
 	queue_free()
 	var Light = light.instantiate()  
 	var a = tree.instantiate()
-	a.global_transform *= 4
+	a.global_transform *= 3
 	Light.global_position= pos
 	owner.add_child(a)
 	a.global_position=pos

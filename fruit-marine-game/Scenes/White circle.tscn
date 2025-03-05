@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4meop34r1gcx"]
+[gd_scene load_steps=3 format=3 uid="uid://dernnfq7yva3a"]
 
-[ext_resource type="Texture2D" uid="uid://cjdask2o2hr4x" path="res://Assests/sprites/White Circ;e-modified.png" id="1_m6vto"]
-[ext_resource type="Script" path="res://Scripts/white_circle.gd" id="2_06mbk"]
+[ext_resource type="Script" path="res://Scripts/white_circle.gd" id="1_44y6y"]
+[ext_resource type="Texture2D" uid="uid://cjdask2o2hr4x" path="res://Assests/sprites/White Circ;e-modified.png" id="2_kylha"]
 
-[node name="Sprite2D" type="Sprite2D"]
-top_level = true
-z_index = 7
-texture = ExtResource("1_m6vto")
-region_rect = Rect2(112, 104, 1088, 1096)
-script = ExtResource("2_06mbk")
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_44y6y")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 13
+texture = ExtResource("2_kylha")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkayc8u0sdaud"]
+[gd_scene load_steps=33 format=3 uid="uid://dkayc8u0sdaud"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_5al3x"]
 [ext_resource type="Texture2D" uid="uid://bulov4y5gs8m5" path="res://Assests/sprites/Bottom_SpriteSheet.png" id="2_gpwtj"]
 [ext_resource type="Texture2D" uid="uid://ctgk1r5o3u0yv" path="res://Assests/sprites/Top_SpriteSheet.png" id="3_xew1s"]
+[ext_resource type="Texture2D" uid="uid://d517mcellcnw" path="res://Assests/sprites/F_Press.png" id="4_0clhk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2u8b"]
 atlas = ExtResource("2_gpwtj")
@@ -196,6 +197,28 @@ func _on_area_entered(area):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdvwi"]
 size = Vector2(3, 47)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbr03"]
+atlas = ExtResource("4_0clhk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g43j"]
+atlas = ExtResource("4_0clhk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yh36g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbr03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g43j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(0, 5)
 collision_layer = 2
@@ -245,3 +268,11 @@ script = SubResource("GDScript_0daui")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(11.5, 0.5)
 shape = SubResource("RectangleShape2D_pdvwi")
+
+[node name="ButtonAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(1, -39)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_yh36g")
+autoplay = "default"
