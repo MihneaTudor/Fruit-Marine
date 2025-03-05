@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 var tree = load("res://Scenes/Tree.tscn")
-var scene = load("res://Scenes/boss_ammo.tscn")
-var light = load("res://Scenes/white_circle.tscn")
+var light = load("res://Scenes/White Circle.tscn")
 
 @onready var target = $"../Player"
 @export var speed: float = 200.0
@@ -19,9 +18,11 @@ var bullet_counter = 0
 var tween
 var posi
 
+var initial_rotatian
+
 
 func _process(delta: float) -> void:
-	$AnimatedSprite2D.play("idle")
+	$Head.play("idle")
 	if not $Timer_Intro.is_stopped():
 		if $Timer_Intro.time_left == 0.75:
 			$Timer.start()
@@ -29,10 +30,19 @@ func _process(delta: float) -> void:
 		return
 	
 func rotate_towards_target():
+	$Neck.rotation_degrees = initial_rotatian - rotation_degrees
 	if target:
 		print("doi")
 		var direction = (target.position - position).normalized()  # Get direction vector
 		var angle_to_target = atan2(direction.y, direction.x)  # Get angle# Create a new tween for smooth rotation
+		
+		#var tween = create_tween()
+		#if abs(rad_to_deg(angle_to_target)+180 - rotation_degrees) < 180:
+			#tween.tween_property(self, "rotation_degrees", rad_to_deg(angle_to_target)+180, 0.2)
+		#else:
+			#tween.tween_property(self, "rotation_degrees", sign(rotation_degrees) * 360, 0.2)
+			#tween.tween_property(self, "rotation_degrees", rad_to_deg(angle_to_target)+180, 0.2)
+			
 		rotation_degrees = rad_to_deg(angle_to_target)+180
 		$Verif.start()
 		 
@@ -53,6 +63,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	
 func _ready():
+	initial_rotatian = rotation_degrees
 	current_health = max_health 
 	layer = 1
 
@@ -66,9 +77,11 @@ func take_damage(amount: int):
 func die():
 	var pos = global_position 
 	queue_free()
+	
 	var Light = light.instantiate()  
 	var a = tree.instantiate()
-	a.global_transform *= 4
+	a.global_transform *= 3
+	owner.add_child(Light)
 	Light.global_position= pos
 	owner.add_child(a)
 	a.global_position=pos

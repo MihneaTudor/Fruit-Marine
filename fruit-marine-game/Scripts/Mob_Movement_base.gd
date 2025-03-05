@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 var tree = load("res://Scenes/Tree.tscn")
 
-
 var bullet = load("res://Scenes/boss_ammo.tscn")
 var bullet_big = load("res://Scenes/boss_ammo_big.tscn")
 var bullet_parry = load("res://Scenes/boss_ammo_parry.tscn")
+
 var light = load("res://Scenes/White Circle.tscn")
 
 const Speed = 30
@@ -181,9 +181,11 @@ func drop():
 func die():
 	var pos = global_position 
 	queue_free()
+	
 	var Light = light.instantiate()  
 	var a = tree.instantiate()
 	a.global_transform *= 3
+	owner.add_child(Light)
 	Light.global_position= pos
 	owner.add_child(a)
 	a.global_position=pos

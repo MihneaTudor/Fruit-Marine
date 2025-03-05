@@ -117,4 +117,4 @@ scale = Vector2(8.6, 1)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Dragon_Head" parent="." instance=ExtResource("7_f03iy")]
-position = Vector2(512, -91)
+position = Vector2(428, -111)
