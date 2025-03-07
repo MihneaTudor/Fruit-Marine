@@ -12,7 +12,7 @@ func countdown():
 		await get_tree().create_timer(1.0).timeout  # Wait 1 second
 		time_left -= 1
 		label.text = str(time_left)  # Update countdown text
-	
+
 	label.text = "GO!"  # Show "GO!" at the end
 	await get_tree().create_timer(1.0).timeout  # Wait a moment
 	label.visible = false  # Hide the label after countdown

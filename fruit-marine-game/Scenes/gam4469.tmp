@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnwkxyttqpq3a"]
+[gd_scene load_steps=12 format=3 uid="uid://dnwkxyttqpq3a"]
 
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_hhg6o"]
+[ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_oiyys"]
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="1_ufoxo"]
 [ext_resource type="Texture2D" uid="uid://wbhox3r32lx2" path="res://Assests/sprites/HeartEmpty.png" id="3_i7jr5"]
 [ext_resource type="Texture2D" uid="uid://bmm6gw6xdlguc" path="res://Assests/sprites/HeartFull.png" id="3_sftiq"]
@@ -35,6 +36,7 @@ b = Vector2(-655, 25)
 distance = -133.0
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_oiyys")
 
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

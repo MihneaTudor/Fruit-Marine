@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvlqebt3k6p22"]
+
+[ext_resource type="Texture2D" uid="uid://bmm6gw6xdlguc" path="res://Assests/sprites/HeartFull.png" id="1_yoaw1"]
+[ext_resource type="PackedScene" uid="uid://c0yu3qhlx5xuv" path="res://Scenes/Dragon_Fist.tscn" id="2_w1gbw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8dy2"]
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(-91, -9)
+scale = Vector2(3.2, 3.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n8dy2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yoaw1")
+
+[node name="Fist_1" parent="." instance=ExtResource("2_w1gbw")]
+position = Vector2(77, 20)
+scale = Vector2(0.294316, 0.294316)
+
+[node name="Fist_2" parent="." instance=ExtResource("2_w1gbw")]
+position = Vector2(-94, 20)
+scale = Vector2(0.295955, 0.295955)

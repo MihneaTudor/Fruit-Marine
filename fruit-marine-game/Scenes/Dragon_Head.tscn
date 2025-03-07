@@ -35,7 +35,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8wfe"]
-radius = 26.3418
+radius = 26.59
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(14, 17)
@@ -71,12 +71,28 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="Aim_assist" type="Marker2D" parent="."]
-position = Vector2(-57, 66)
-
-[node name="Timer" type="Timer" parent="."]
+[node name="Shooting_Small" type="Timer" parent="."]
+process_callback = 0
+wait_time = 1.4
 one_shot = true
 
 [node name="Verif" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Aim_Assist" type="Marker2D" parent="."]
+position = Vector2(-66, 55)
+rotation = 3.01388
+
+[node name="ZeBeam" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
+[node name="ZeBeamCooldown" type="Timer" parent="."]
+wait_time = 25.0
+one_shot = true
+autostart = true
+
+[node name="Warmup" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true

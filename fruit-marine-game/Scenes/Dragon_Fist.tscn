@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0yu3qhlx5xuv"]
+
+[ext_resource type="Script" path="res://Scripts/Dragon_Fist.gd" id="1_f006d"]
+[ext_resource type="Texture2D" uid="uid://chek8lgx0jegx" path="res://Assests/sprites/Tree.png" id="1_vooxv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybc81"]
+size = Vector2(50.0008, 39.5864)
+
+[node name="Area2D" type="Area2D"]
+rotation = 0.132663
+script = ExtResource("1_f006d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(40.6751, 17.8745)
+rotation = -0.133929
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_ybc81")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(40, 15)
+rotation = -0.149862
+scale = Vector2(2.32091, 1.80651)
+texture = ExtResource("1_vooxv")
+
+[node name="Timer_Intro" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Down_Time" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="Attack_Timer" type="Timer" parent="."]
+
+[node name="Attack_Cooldown" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="StartUp" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
