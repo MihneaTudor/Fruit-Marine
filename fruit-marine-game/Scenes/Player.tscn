@@ -1,9 +1,16 @@
-[gd_scene load_steps=33 format=3 uid="uid://dkayc8u0sdaud"]
+[gd_scene load_steps=39 format=3 uid="uid://dkayc8u0sdaud"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_5al3x"]
 [ext_resource type="Texture2D" uid="uid://bulov4y5gs8m5" path="res://Assests/sprites/Bottom_SpriteSheet.png" id="2_gpwtj"]
 [ext_resource type="Texture2D" uid="uid://ctgk1r5o3u0yv" path="res://Assests/sprites/Top_SpriteSheet.png" id="3_xew1s"]
 [ext_resource type="Texture2D" uid="uid://d517mcellcnw" path="res://Assests/sprites/F_Press.png" id="4_0clhk"]
+[ext_resource type="Shader" uid="uid://dvo7a0gcoprpq" path="res://Scenes/Damage.tres" id="4_og3kp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwq0g"]
+resource_local_to_scene = true
+shader = ExtResource("4_og3kp")
+shader_parameter/BooleanParameter = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n2u8b"]
 atlas = ExtResource("2_gpwtj")
@@ -78,6 +85,12 @@ animations = [{
 "name": &"Running",
 "speed": 7.5
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuktx"]
+resource_local_to_scene = true
+shader = ExtResource("4_og3kp")
+shader_parameter/BooleanParameter = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mjk6"]
 atlas = ExtResource("3_xew1s")
@@ -219,6 +232,67 @@ animations = [{
 "speed": 2.5
 }]
 
+[sub_resource type="Animation" id="Animation_c16ve"]
+resource_name = "HitFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopSprite:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomSprite:material:shader_parameter/BooleanParameter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_kb384"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopSprite:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomSprite:material:shader_parameter/BooleanParameter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqk1b"]
+_data = {
+"HitFlash": SubResource("Animation_c16ve"),
+"RESET": SubResource("Animation_kb384")
+}
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(0, 5)
 collision_layer = 2
@@ -227,18 +301,18 @@ SPEED = 450.0
 shootTime = 0.25
 
 [node name="BottomSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_wwq0g")
 position = Vector2(4, -8)
 sprite_frames = SubResource("SpriteFrames_te3qe")
 animation = &"Jumping"
 autoplay = "Idle"
 
 [node name="TopSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_tuktx")
 position = Vector2(4, -8)
 sprite_frames = SubResource("SpriteFrames_odtwb")
-animation = &"Parry"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -276,3 +350,8 @@ position = Vector2(1, -39)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_yh36g")
 autoplay = "default"
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kqk1b")
+}

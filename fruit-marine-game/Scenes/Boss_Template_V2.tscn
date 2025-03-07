@@ -1,7 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvbtnribt1fc2"]
+[gd_scene load_steps=22 format=3 uid="uid://bvbtnribt1fc2"]
 
 [ext_resource type="Texture2D" uid="uid://btcr70q4hm2n6" path="res://Assests/sprites/Boss1_Phase1.png" id="1_b78xg"]
 [ext_resource type="Script" path="res://Scripts/Mob_Movement_base.gd" id="1_x6lq7"]
+[ext_resource type="Shader" uid="uid://dvo7a0gcoprpq" path="res://Scenes/Damage.tres" id="2_urmsh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ead0w"]
+resource_local_to_scene = true
+shader = ExtResource("2_urmsh")
+shader_parameter/BooleanParameter = true
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xl20k"]
 atlas = ExtResource("1_b78xg")
@@ -108,12 +115,50 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkafb"]
 size = Vector2(38.6667, 53.6667)
 
+[sub_resource type="Animation" id="Animation_50pem"]
+resource_name = "HitFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_2y1lr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlx76"]
+_data = {
+"HitFlash": SubResource("Animation_50pem"),
+"RESET": SubResource("Animation_2y1lr")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 5
 script = ExtResource("1_x6lq7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
+material = SubResource("ShaderMaterial_ead0w")
 position = Vector2(1, -3)
 scale = Vector2(3.096, 3)
 sprite_frames = SubResource("SpriteFrames_xobc3")
@@ -162,3 +207,9 @@ autostart = true
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qlx76")
+}
+autoplay = "HitFlash"

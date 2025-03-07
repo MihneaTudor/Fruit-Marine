@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4fwnu0umelnu"]
+
+[ext_resource type="Script" path="res://Scripts/HP_Bar.gd" id="1_ck6e4"]
+[ext_resource type="Texture2D" uid="uid://mlrqq0g3oad3" path="res://Assests/sprites/White Circ;e.jpg" id="2_gjysv"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(940, 546)
+scale = Vector2(0.105, 0.105)
+script = ExtResource("1_ck6e4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(10, 1)
+texture = ExtResource("2_gjysv")
+
+[node name="Health" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(9.9, 0.9)
+texture = ExtResource("2_gjysv")
