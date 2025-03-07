@@ -57,9 +57,11 @@ func PhaseTwo():
 
 	# ✅ Create a tween to move Dragon_Cap upwards
 	var cap_tween = create_tween()
-	cap_tween.tween_property(Dragon_Cap, "global_position", Vector2(camera_center.x, camera_center.y-50 ), 1)
+	cap_tween.tween_property(Dragon_Cap, "global_position", Vector2(camera_center.x, camera_center.y - 100), 1)
 
 	print("Dragon_Cap spawned with fists and moving up!")
+
+
 
 func countdown():
 	while time_left > 0:
