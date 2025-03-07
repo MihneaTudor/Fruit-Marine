@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/boss_parry.gd" id="1_www0x"]
 [ext_resource type="Texture2D" uid="uid://ctgk1r5o3u0yv" path="res://Assests/sprites/Top_SpriteSheet.png" id="2_8w1vk"]
-[ext_resource type="Shader" uid="uid://dvo7a0gcoprpq" path="res://Scenes/Damage.tres" id="2_rqi3c"]
+[ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_rqi3c"]
 [ext_resource type="Texture2D" uid="uid://bulov4y5gs8m5" path="res://Assests/sprites/Bottom_SpriteSheet.png" id="2_t53hh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlg4q"]
@@ -207,7 +207,7 @@ _data = {
 "RESET": SubResource("Animation_tux8x")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D2" type="CharacterBody2D"]
 collision_layer = 5
 script = ExtResource("1_www0x")
 
