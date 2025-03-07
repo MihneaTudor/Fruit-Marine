@@ -8,9 +8,9 @@ var bullet_parry = load("res://Scenes/boss_ammo_parry.tscn")
 
 @onready var target = $"../Player"
 @export var speed: float = 200.0
+@export var max_health = 10
 
 var direction = 1
-var max_health = 10
 var current_health: float
 var layer=1
 var timer

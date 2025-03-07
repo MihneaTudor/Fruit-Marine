@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 
 
 func PhaseTwo():
+	
 	print("Phase Two Started! Spawning Dragon_Cap with fists.")
 
 	# ✅ Get camera's world position
