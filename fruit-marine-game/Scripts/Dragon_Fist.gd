@@ -9,9 +9,13 @@ var dragon_head = load("res://Scenes/Dragon_Cap.tscn")
 
 var retreat = 1
 var attacking = 0
-@onready var target = $"../../Player"
+
+@export var time : float 
 @export var speed: float = 200.0
+
 @onready var timer_intro = $Timer_Intro
+@onready var target = $"../../Player"
+
 
 var direction = 1
 var max_health = 10
@@ -19,7 +23,14 @@ var current_health: float = max_health  # ✅ Initialize health
 var pos = Vector2.ZERO  # ✅ Initialize pos to prevent null errors
 var tween: Tween
 
+func _ready():
+	$Delay.wait_time = time
+	$Delay.start()
+	
 func _physics_process(delta: float) -> void:
+	if not $Delay.is_stopped():
+		return
+		
 	if tween and tween.is_running():
 		return  # ✅ Prevent overlapping tweens
 
@@ -54,9 +65,10 @@ func attack():
 		tween.kill()  # ✅ Ensure no other tween is interfering
 
 	tween = create_tween()
-	tween.tween_property(self, "global_position", Vector2(pos.x, -450), 2)
+	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 2)
 	$Targeting.start()
 	attacking = 1
+	$Attack_Cooldown.start()
 
 func drop():
 	print("Dropping...")  # ✅ Debugging line to ensure function is being called
@@ -65,15 +77,14 @@ func drop():
 		tween.kill()  # ✅ Stop any existing tween
 
 	tween = create_tween()
-	tween.tween_property(self, "global_position", Vector2(global_position.x, 50), 2)
-	tween.finished.connect(func(): print("Drop animation completed"))  # ✅ Debugging confirmation
+	tween.tween_property(self, "global_position", Vector2(global_position.x, 160), 2)
+
 
 func move_up():
-	if tween:
-		tween.kill()  # ✅ Stop any existing tween before moving up
+
 
 	tween = create_tween()
-	tween.tween_property(self, "global_position", Vector2(pos.x, -450), 2)
+	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 2)
 
 func _on_body_entered(body):
 	if body.name == "Player":

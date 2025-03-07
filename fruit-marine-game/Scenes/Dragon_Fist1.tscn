@@ -8,6 +8,7 @@ size = Vector2(50.0008, 39.5864)
 
 [node name="Area2D" type="Area2D"]
 rotation = 0.132663
+scale = Vector2(2, 2)
 script = ExtResource("1_f006d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -32,7 +33,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 
@@ -44,3 +45,8 @@ autostart = true
 [node name="Targeting" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
+
+[node name="Delay" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
