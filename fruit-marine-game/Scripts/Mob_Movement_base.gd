@@ -11,7 +11,7 @@ var light = load("res://Scenes/White Circle.tscn")
 const Speed = 30
 var gravity = ProjectSettings.get("physics/2d/default_gravity")  # Get Godot's gravity
 var direction = 1
-var max_health = 10
+@export var max_health = 60
 var current_health: float
 var layer=1
 var timer
@@ -91,6 +91,7 @@ func _physics_process(delta: float) -> void:
 	if $Timer2.is_stopped():
 		var layering = randi() % 2 + 1
 		layer2 = (layering + layer) % 3
+		print(str(layer) + " -> " + str(layer2))
 		print(layer2)
 		if layer2>layer and is_on_floor():
 			jump(700+(layer2-layer-1)*280)
@@ -172,14 +173,16 @@ func shoot3():
 func take_damage(amount: int):
 	current_health -= amount
 	current_health = max(0, current_health)  # Prevent negative HP
+	$HitFlash.play("HitFlash")
 	#health_changed.emit(current_health)
 
 		
 func drop():
-	position.y += 1
+	position.y += 3
 	
 func die():
 	var pos = global_position 
+	$"../HP".queue_free()
 	queue_free()
 	
 	var Light = light.instantiate()  
