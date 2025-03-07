@@ -3,7 +3,8 @@ extends Node
 @onready var label = $UI/Label  # Adjust the path to your Label node
 var time_left = 3  # Countdown starting number
 @onready var Dragon_Cap=load("res://Scenes/Dragon_Cap.tscn")
-@onready var child_node = $Dragon_Head
+@onready var HP=load("res://Scenes/HealthBar.tscn")
+@onready var child_node = $boss
 @onready var static_body_1 = $Environment/StaticBody2D/CollisionShape2D
 @onready var static_body_2 = $Environment/StaticBody2D2/CollisionShape2D
 @onready var camera = $Camera2D  # Reference to the Camera2D
@@ -51,10 +52,17 @@ func PhaseTwo():
 	var floor_y = camera_center.y + 200  # Adjust this value for floor position
 	Dragon_Cap.global_position = Vector2(camera_center.x, floor_y)
 
-	Dragon_Cap.name="Dragon_Cap"
+	Dragon_Cap.name="boss"
 
 	get_tree().current_scene.add_child(Dragon_Cap)
+	
+	var HP = HP.instantiate()
+	HP.position = Vector2(0, 326.38)
+	HP.scale = Vector2(0.105, 0.02)
+	HP.name="HP"
 
+	get_tree().current_scene.add_child(HP)
+	
 	# ✅ Create a tween to move Dragon_Cap upwards
 	var cap_tween = create_tween()
 	cap_tween.tween_property(Dragon_Cap, "global_position", Vector2(camera_center.x, camera_center.y - 100), 1)

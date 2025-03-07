@@ -108,6 +108,7 @@ func shoot1():
 	
 func die():
 	queue_free()
+	$"../HP".queue_free()
 	
 	
 		

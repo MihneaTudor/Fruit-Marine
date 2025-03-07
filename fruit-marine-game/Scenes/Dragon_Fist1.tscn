@@ -22,6 +22,7 @@ collision_mask = 2
 script = ExtResource("1_f006d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
 position = Vector2(40.6751, 17.8745)
 rotation = -0.133929
 scale = Vector2(3, 3)
@@ -68,8 +69,12 @@ wait_time = 10.0
 one_shot = true
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 [node name="Colli" type="Timer" parent="."]
 
+>>>>>>> Stashed changes
+=======
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 >>>>>>> Stashed changes
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

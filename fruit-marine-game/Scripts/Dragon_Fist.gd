@@ -68,6 +68,7 @@ func _physics_process(delta: float) -> void:
 <<<<<<< Updated upstream
 
 func take_damage(amount: int):
+	print("HEWLLO")
 	current_health = max(0, current_health - amount)
 =======
 
