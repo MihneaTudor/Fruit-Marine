@@ -7,7 +7,6 @@ var bullet = load("res://Scenes/glont_template.tscn")
 @export var JUMP_VELOCITY: float = -700.0
 @export var  shootTime: float = 0.1
 @export var max_health: int = 3
-@export var damage = 1
 
 @onready var detection_area = $Area2D  # Reference to the Area2D child
 
@@ -21,15 +20,14 @@ func _ready():
 	#health_changed.emit(current_health)  # Emit signal for UI
 	
 func take_damage(amount: int):
+	print("si-a luat la mue")
 	current_health = amount
 	current_health = max(0, current_health)  # Prevent negative HP
 	#health_changed.emit(current_health)
 	if current_health == 0:
 		die()
-	$HitFlash.play("HitFlash")
-	
 func _on_area_entered(area):
-	if $TopSprite.animation == "Parry" and area.name.begins_with("BossAmmo2"):
+	if $TopSprite.animation == "Parry" and $TopSprite.frame < 3 and area.name.begins_with("BossAmmo2"):
 		area.rotation_degrees += 180
 		area.collision_mask = 3
 		
@@ -123,7 +121,6 @@ func _physics_process(delta: float) -> void:
 func shoot():
 	$TopSprite.play("Shooting")
 	var b = bullet.instantiate()
-	b.damage = damage
 	owner.add_child(b)
 	b.global_transform = $Marker2D.global_transform
 	$Timer.start()
