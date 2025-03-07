@@ -6,6 +6,7 @@ var bullet = load("res://Scenes/boss_ammo.tscn")
 var bullet_big = load("res://Scenes/boss_ammo_big.tscn")
 var bullet_parry = load("res://Scenes/boss_ammo_parry.tscn")
 var dragon_head = load("res://Scenes/Dragon_Cap.tscn")
+var death=0 
 
 var retreat = 1
 var attacking = 0
@@ -15,7 +16,6 @@ var attacking = 0
 
 @onready var timer_intro = $Timer_Intro
 @onready var target = $"../../Player"
-
 
 var direction = 1
 var max_health = 10
@@ -28,12 +28,23 @@ func _ready():
 	$Delay.start()
 	
 func _physics_process(delta: float) -> void:
+	if not $Down_Time.is_stopped():
+		return
+		
 	if not $Delay.is_stopped():
 		return
 		
 	if tween and tween.is_running():
 		return  # ✅ Prevent overlapping tweens
-
+	
+	if current_health == 0 and death==1:
+		print("iese")
+		current_health=max_health
+		death=0	
+		tween = create_tween()
+		tween.tween_property(self, "global_position", Vector2(global_position.x, -140), 0.5)
+		$Attack_Cooldown.start()
+	
 	if current_health == 0:
 		die()
 		return
@@ -65,7 +76,7 @@ func attack():
 		tween.kill()  # ✅ Ensure no other tween is interfering
 
 	tween = create_tween()
-	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 2)
+	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 1.5)
 	$Targeting.start()
 	attacking = 1
 	$Attack_Cooldown.start()
@@ -77,19 +88,22 @@ func drop():
 		tween.kill()  # ✅ Stop any existing tween
 
 	tween = create_tween()
-	tween.tween_property(self, "global_position", Vector2(global_position.x, 160), 2)
+	tween.tween_property(self, "global_position", Vector2(global_position.x, 160), 1)
 
 
 func move_up():
 
-
 	tween = create_tween()
-	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 2)
+	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 1)
 
-func _on_body_entered(body):
+func _on_body_entered(body): 
 	if body.name == "Player":
 		body.take_damage(1)
 		
 func die():
-	print("Boss defeated!")  # ✅ Debugging output
-	queue_free()
+	$Down_Time.start()
+	tween = create_tween()
+	
+	tween.tween_property(self, "global_position", Vector2(global_position.x, 160), 0.5)
+	death=1	
+	

@@ -22,7 +22,7 @@ animations = [{
 radius = 5.09902
 
 [node name="Glont_Template" type="Area2D"]
-collision_mask = 4
+collision_mask = 132
 script = ExtResource("1_byixv")
 speed = 250
 
@@ -33,4 +33,5 @@ animation = &"Bullet"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_avo4d")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

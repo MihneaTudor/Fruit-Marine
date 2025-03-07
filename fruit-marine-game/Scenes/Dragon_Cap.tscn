@@ -6,20 +6,23 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8dy2"]
 
 [node name="Area2D" type="Area2D"]
-position = Vector2(-91, -9)
+position = Vector2(-150, 41)
 scale = Vector2(3.2, 3.2)
+collision_layer = 128
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.937505)
 shape = SubResource("CircleShape2D_n8dy2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yoaw1")
 
 [node name="Fist_1" parent="." instance=ExtResource("2_w1gbw")]
-position = Vector2(-102.5, 18.75)
-scale = Vector2(0.421402, 0.421402)
+position = Vector2(-139.688, 3.74999)
+scale = Vector2(0.421402, 0.430506)
 
 [node name="Fist_2" parent="." instance=ExtResource("2_w1gbw")]
-position = Vector2(75.9375, 19.375)
+position = Vector2(104.063, 4.68749)
 scale = Vector2(0.443308, 0.443308)
-time = 20.0
+time = 9.0
