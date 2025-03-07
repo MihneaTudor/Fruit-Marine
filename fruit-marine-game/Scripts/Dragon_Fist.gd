@@ -43,10 +43,6 @@ func _physics_process(delta: float) -> void:
 		death=0	
 		tween = create_tween()
 		tween.tween_property(self, "global_position", Vector2(global_position.x, -140), 0.5)
-<<<<<<< Updated upstream
-=======
-		$Colli.start()
->>>>>>> Stashed changes
 		$Attack_Cooldown.start()
 	
 	if current_health == 0:
@@ -65,31 +61,16 @@ func _physics_process(delta: float) -> void:
 	if $Attack_Timer.is_stopped() and retreat == 0:
 		move_up()
 		retreat = 1
-<<<<<<< Updated upstream
 
 func take_damage(amount: int):
 	print("HEWLLO")
 	current_health = max(0, current_health - amount)
-=======
-
-	
-
-func take_damage(amount: int):
-	current_health = max(0, current_health - amount)
-
-
-	
->>>>>>> Stashed changes
 
 func attack():
 	if target == null:
 		print("Error: Target is null")
 		return
-<<<<<<< Updated upstream
 
-=======
-	$CollisionShape2D.disabled = false
->>>>>>> Stashed changes
 	pos = target.global_position  # ✅ Ensure position is updated correctly
 
 	if tween:
@@ -123,11 +104,7 @@ func _on_body_entered(body):
 func die():
 	$Down_Time.start()
 	tween = create_tween()
-<<<<<<< Updated upstream
 	
-=======
-	$CollisionShape2D.disabled = true
->>>>>>> Stashed changes
 	tween.tween_property(self, "global_position", Vector2(global_position.x, 160), 0.5)
 	death=1	
 	
