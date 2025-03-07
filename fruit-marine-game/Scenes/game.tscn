@@ -110,7 +110,6 @@ one_way_collision = true
 
 [node name="boss" parent="." instance=ExtResource("6_nvwlk")]
 position = Vector2(501, -48)
-max_health = 85
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ufoxo")]
 position = Vector2(-576, 202)

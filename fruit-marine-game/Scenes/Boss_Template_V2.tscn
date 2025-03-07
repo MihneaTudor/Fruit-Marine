@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://btcr70q4hm2n6" path="res://Assests/sprites/Boss1_Phase1.png" id="1_b78xg"]
 [ext_resource type="Script" path="res://Scripts/Mob_Movement_base.gd" id="1_x6lq7"]
-[ext_resource type="Shader" uid="uid://dvo7a0gcoprpq" path="res://Scenes/Damage.tres" id="2_urmsh"]
+[ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_urmsh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ead0w"]
 resource_local_to_scene = true
