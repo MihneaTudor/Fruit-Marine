@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bulov4y5gs8m5" path="res://Assests/sprites/Bottom_SpriteSheet.png" id="2_gpwtj"]
 [ext_resource type="Texture2D" uid="uid://ctgk1r5o3u0yv" path="res://Assests/sprites/Top_SpriteSheet.png" id="3_xew1s"]
 [ext_resource type="Texture2D" uid="uid://d517mcellcnw" path="res://Assests/sprites/F_Press.png" id="4_0clhk"]
-[ext_resource type="Shader" uid="uid://dvo7a0gcoprpq" path="res://Scenes/Damage.tres" id="4_og3kp"]
+[ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="4_og3kp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwq0g"]
 resource_local_to_scene = true

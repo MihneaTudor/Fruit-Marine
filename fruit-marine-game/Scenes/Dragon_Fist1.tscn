@@ -9,6 +9,7 @@ size = Vector2(50.0008, 39.5864)
 [node name="Area2D" type="Area2D"]
 rotation = 0.132663
 scale = Vector2(2, 2)
+collision_mask = 2
 script = ExtResource("1_f006d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

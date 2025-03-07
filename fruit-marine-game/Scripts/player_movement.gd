@@ -20,7 +20,6 @@ func _ready():
 	#health_changed.emit(current_health)  # Emit signal for UI
 	
 func take_damage(amount: int):
-	print("si-a luat la mue")
 	current_health = amount
 	current_health = max(0, current_health)  # Prevent negative HP
 	#health_changed.emit(current_health)

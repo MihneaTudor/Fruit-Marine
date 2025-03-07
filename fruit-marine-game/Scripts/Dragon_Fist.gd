@@ -89,7 +89,7 @@ func move_up():
 func _on_body_entered(body):
 	if body.name == "Player":
 		body.take_damage(1)
-
+		
 func die():
 	print("Boss defeated!")  # ✅ Debugging output
 	queue_free()
