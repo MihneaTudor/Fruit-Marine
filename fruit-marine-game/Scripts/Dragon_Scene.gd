@@ -7,6 +7,8 @@ var time_left = 3  # Countdown starting number
 @onready var child_node = $boss
 @onready var static_body_1 = $Environment/StaticBody2D/CollisionShape2D
 @onready var static_body_2 = $Environment/StaticBody2D2/CollisionShape2D
+@onready var platforms = $Environment/TileMap2
+@onready var border1 = $"Environment/World Border Down/World Border Down/World Border Down"
 @onready var camera = $Camera2D  # Reference to the Camera2D
 var ok
 var already_freed = false
@@ -29,6 +31,16 @@ func _process(delta: float) -> void:
 
 		if is_instance_valid(static_body_2):
 			static_body_2.queue_free()
+		else:
+			print("StaticBody2D2 is already freed!")
+
+		if is_instance_valid(platforms):
+			platforms.queue_free()
+		else:
+			print("StaticBody2D2 is already freed!")
+			
+		if is_instance_valid(border1):
+			border1.queue_free()
 		else:
 			print("StaticBody2D2 is already freed!")
 	

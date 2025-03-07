@@ -26,6 +26,7 @@ var tween: Tween
 func _ready():
 	$Delay.wait_time = time
 	$Delay.start()
+	$Jump_Indicator.scale.x *= sign(self.scale.x)
 	
 func _physics_process(delta: float) -> void:
 	if not $Down_Time.is_stopped():
@@ -65,11 +66,14 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount: int):
 	print("HEWLLO")
 	current_health = max(0, current_health - amount)
+	$HitFlash.play("HitFlash")
 
 func attack():
 	if target == null:
 		print("Error: Target is null")
 		return
+		
+	$AnimatedSprite2D.play("Idle")
 
 	pos = target.global_position  # ✅ Ensure position is updated correctly
 
@@ -84,6 +88,7 @@ func attack():
 
 func drop():
 	print("Dropping...")  # ✅ Debugging line to ensure function is being called
+	$AnimatedSprite2D.play("attack")
 
 	if tween:
 		tween.kill()  # ✅ Stop any existing tween
@@ -93,7 +98,9 @@ func drop():
 
 
 func move_up():
-
+	if randi() % 2:
+		$AnimatedSprite2D.play("Idle")
+	$Jump_Indicator.visible = false
 	tween = create_tween()
 	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 1)
 
@@ -102,6 +109,8 @@ func _on_body_entered(body):
 		body.take_damage(1)
 		
 func die():
+	$Jump_Indicator.visible = true
+	
 	$Down_Time.start()
 	tween = create_tween()
 	

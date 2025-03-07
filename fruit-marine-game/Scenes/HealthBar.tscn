@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://mlrqq0g3oad3" path="res://Assests/sprites/White Circ;e.jpg" id="2_gjysv"]
 
 [node name="HP" type="Node2D"]
+z_index = 6
 position = Vector2(940, 546)
 scale = Vector2(0.105, 0.105)
 script = ExtResource("1_ck6e4")

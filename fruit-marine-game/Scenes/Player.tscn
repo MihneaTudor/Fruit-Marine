@@ -294,6 +294,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D"]
+z_index = 7
 position = Vector2(0, 5)
 collision_layer = 2
 script = ExtResource("1_5al3x")

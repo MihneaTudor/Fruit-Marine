@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlf5bljonkmwi"]
+
+[ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_dpbit"]
+[ext_resource type="Texture2D" uid="uid://c8n5eul1mapva" path="res://Assests/sprites/DragonFire.png" id="2_k2t4q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmsaf"]
+atlas = ExtResource("2_k2t4q")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6xbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmsaf")
+}],
+"loop": false,
+"name": &"Bullet",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avo4d"]
+radius = 14.0357
+
+[node name="boss_ammo" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_dpbit")
+speed = 220
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b6xbd")
+animation = &"Bullet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_avo4d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

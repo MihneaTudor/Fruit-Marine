@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://crw22jhyjteck"]
+
+[ext_resource type="Script" path="res://Scripts/white_circle.gd" id="1_sh1fq"]
+[ext_resource type="Texture2D" uid="uid://cjdask2o2hr4x" path="res://Assests/sprites/White Circ;e-modified.png" id="2_6mean"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_sh1fq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+z_index = 13
+texture = ExtResource("2_6mean")

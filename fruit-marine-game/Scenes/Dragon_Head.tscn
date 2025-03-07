@@ -1,60 +1,260 @@
-[gd_scene load_steps=9 format=3 uid="uid://covovdnt10k1g"]
+[gd_scene load_steps=29 format=3 uid="uid://covovdnt10k1g"]
 
 [ext_resource type="Script" path="res://Scripts/dragon_head.gd" id="1_w1wde"]
 [ext_resource type="Texture2D" uid="uid://caum3poumw6ya" path="res://Assests/sprites/Dragon_Head.png" id="2_0oe1t"]
+[ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_htgxk"]
 [ext_resource type="Texture2D" uid="uid://bub7exeimaoew" path="res://Assests/sprites/Dragon_Neck.png" id="3_5ndk4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n87rf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7q7id"]
+resource_local_to_scene = true
+shader = ExtResource("2_htgxk")
+shader_parameter/BooleanParameter = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4loe"]
 atlas = ExtResource("2_0oe1t")
-region = Rect2(0, 0, 128, 80)
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2cff"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4osu"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7cc4"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wstr8"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xwt2"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbld0"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvd2j"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orfle"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apkgx"]
+atlas = ExtResource("2_0oe1t")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xobc3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n87rf")
+"texture": SubResource("AtlasTexture_g4loe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2cff")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4osu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7cc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wstr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xwt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbld0")
+}],
+"loop": false,
+"name": &"charge",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvd2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orfle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orfle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orfle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orfle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apkgx")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 3.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r2j5i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8g1tp"]
+resource_local_to_scene = true
+shader = ExtResource("2_htgxk")
+shader_parameter/BooleanParameter = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hniv8"]
 atlas = ExtResource("3_5ndk4")
-region = Rect2(0, 0, 128, 80)
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krnp5"]
+atlas = ExtResource("3_5ndk4")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gb0u"]
+atlas = ExtResource("3_5ndk4")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys83n"]
+atlas = ExtResource("3_5ndk4")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wg1k"]
+atlas = ExtResource("3_5ndk4")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_appg4"]
+atlas = ExtResource("3_5ndk4")
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cnefo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r2j5i")
+"texture": SubResource("AtlasTexture_hniv8")
 }],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krnp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gb0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys83n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wg1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_appg4")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8wfe"]
 radius = 26.59
 
+[sub_resource type="Animation" id="Animation_klp5j"]
+resource_name = "HitFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Neck:material:shader_parameter/BooleanParameter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_yea8f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Neck:material:shader_parameter/BooleanParameter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5adfc"]
+_data = {
+"HitFlash": SubResource("Animation_klp5j"),
+"RESET": SubResource("Animation_yea8f")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(14, 17)
 collision_layer = 5
 script = ExtResource("1_w1wde")
+max_health = 50
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 z_index = 4
+material = SubResource("ShaderMaterial_7q7id")
 position = Vector2(6, 38)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_xobc3")
-animation = &"idle"
+animation = &"charge"
 autoplay = "idle"
 
 [node name="Neck" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_8g1tp")
 position = Vector2(6, 38)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cnefo")
-animation = &"Idle"
+animation = &"charge"
+frame_progress = 0.174802
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 53)
@@ -73,11 +273,6 @@ autostart = true
 
 [node name="Shooting_Small" type="Timer" parent="."]
 process_callback = 0
-wait_time = 1.4
-one_shot = true
-
-[node name="Verif" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [node name="Aim_Assist" type="Marker2D" parent="."]
@@ -85,14 +280,16 @@ position = Vector2(-66, 55)
 rotation = 3.01388
 
 [node name="ZeBeam" type="Timer" parent="."]
-wait_time = 3.5
+wait_time = 4.5
 one_shot = true
 
 [node name="ZeBeamCooldown" type="Timer" parent="."]
-wait_time = 25.0
+wait_time = 14.0
 one_shot = true
 autostart = true
 
-[node name="Warmup" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5adfc")
+}
+autoplay = "HitFlash"

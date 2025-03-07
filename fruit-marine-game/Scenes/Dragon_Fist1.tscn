@@ -1,34 +1,138 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0yu3qhlx5xuv"]
+[gd_scene load_steps=17 format=3 uid="uid://c0yu3qhlx5xuv"]
 
 [ext_resource type="Script" path="res://Scripts/Dragon_Fist.gd" id="1_f006d"]
-[ext_resource type="Texture2D" uid="uid://chek8lgx0jegx" path="res://Assests/sprites/Tree.png" id="1_vooxv"]
+[ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_l3qod"]
+[ext_resource type="Texture2D" uid="uid://b77h4bo3ketq8" path="res://Assests/sprites/DragonHands.png" id="2_mc7vn"]
+[ext_resource type="Texture2D" uid="uid://cpnp3yytdxs1n" path="res://Assests/sprites/Jump_Indicator.png" id="3_ysxy0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lo737"]
+resource_local_to_scene = true
+shader = ExtResource("2_l3qod")
+shader_parameter/BooleanParameter = true
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnlkj"]
+atlas = ExtResource("2_mc7vn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvhx1"]
+atlas = ExtResource("2_mc7vn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mc8fd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnlkj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvhx1")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqdgr"]
+atlas = ExtResource("3_ysxy0")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4e04"]
+atlas = ExtResource("3_ysxy0")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wiy83"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqdgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4e04")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybc81"]
-size = Vector2(50.0008, 39.5864)
+size = Vector2(37.2961, 44.6875)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_07468"]
-a = Vector2(147.734, 5.56366)
-b = Vector2(-1.15529, 10.2428)
+a = Vector2(137, 3)
+b = Vector2(26, 3)
+
+[sub_resource type="Animation" id="Animation_fatsk"]
+resource_name = "HitFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7ykq6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yf6li"]
+_data = {
+"HitFlash": SubResource("Animation_fatsk"),
+"RESET": SubResource("Animation_7ykq6")
+}
 
 [node name="Area2D" type="Area2D"]
-rotation = 0.132663
 scale = Vector2(2, 2)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_f006d")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_lo737")
+position = Vector2(9, -15.5)
+scale = Vector2(2.20313, 2.20313)
+sprite_frames = SubResource("SpriteFrames_mc8fd")
+animation = &"attack"
+autoplay = "Idle"
+
+[node name="Jump_Indicator" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 6
+position = Vector2(0, -76)
+scale = Vector2(1.92969, 1.92969)
+sprite_frames = SubResource("SpriteFrames_wiy83")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.97504
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
-position = Vector2(40.6751, 17.8745)
-rotation = -0.133929
+position = Vector2(-0.0557823, -7.96879)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_ybc81")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(40, 15)
-rotation = -0.149862
-scale = Vector2(2.32091, 1.80651)
-texture = ExtResource("1_vooxv")
 
 [node name="Timer_Intro" type="Timer" parent="."]
 wait_time = 3.0
@@ -53,16 +157,22 @@ wait_time = 1.5
 one_shot = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-40.7309, -18.1917)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-41.0416, -42.9486)
-rotation = -0.102612
+position = Vector2(-42.2691, -58.3083)
 shape = SubResource("SegmentShape2D_07468")
 one_way_collision = true
 
 [node name="Down_Time" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yf6li")
+}
+autoplay = "HitFlash"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

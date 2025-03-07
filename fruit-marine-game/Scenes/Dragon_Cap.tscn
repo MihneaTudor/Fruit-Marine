@@ -1,10 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvlqebt3k6p22"]
+[gd_scene load_steps=10 format=3 uid="uid://bvlqebt3k6p22"]
 
 [ext_resource type="Script" path="res://Scripts/DragonHead.gd" id="1_cnm7i"]
-[ext_resource type="Texture2D" uid="uid://bmm6gw6xdlguc" path="res://Assests/sprites/HeartFull.png" id="1_yoaw1"]
+[ext_resource type="Texture2D" uid="uid://ba4u6avdleti2" path="res://Assests/sprites/DragonHead.png" id="2_ip3gs"]
+[ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_rruqd"]
 [ext_resource type="PackedScene" uid="uid://c0yu3qhlx5xuv" path="res://Scenes/Dragon_Fist1.tscn" id="2_w1gbw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8dy2"]
+radius = 45.0531
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnayk"]
+resource_local_to_scene = true
+shader = ExtResource("2_rruqd")
+shader_parameter/BooleanParameter = true
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_8gr3d"]
+resource_name = "HitFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_w55w6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyy2l"]
+_data = {
+"HitFlash": SubResource("Animation_8gr3d"),
+"RESET": SubResource("Animation_w55w6")
+}
 
 [node name="Area2D" type="Area2D"]
 position = Vector2(-150, 41)
@@ -14,17 +59,25 @@ collision_mask = 6
 script = ExtResource("1_cnm7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.937505)
+position = Vector2(0, -30.3125)
 shape = SubResource("CircleShape2D_n8dy2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_yoaw1")
+material = SubResource("ShaderMaterial_jnayk")
+position = Vector2(0, -14.6875)
+texture = ExtResource("2_ip3gs")
 
 [node name="Fist_1" parent="." instance=ExtResource("2_w1gbw")]
-position = Vector2(-139.688, 3.74999)
+position = Vector2(-121.25, 4.0625)
 scale = Vector2(0.421402, 0.430506)
 
 [node name="Fist_2" parent="." instance=ExtResource("2_w1gbw")]
-position = Vector2(104.063, 3.75)
-scale = Vector2(0.443308, 0.443308)
+position = Vector2(122.501, 4.06251)
+scale = Vector2(-0.443, 0.443)
 time = 9.0
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yyy2l")
+}
+autoplay = "HitFlash"
