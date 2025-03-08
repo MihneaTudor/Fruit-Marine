@@ -7,6 +7,7 @@ var retreat = 1
 var attacking = 0
 var pos
 var duration = 7
+var Checker=0
 @export var time : float 
 @export var speed: float = 200.0
 
@@ -29,7 +30,9 @@ func _physics_process(delta: float) -> void:
 	if $Attack.is_stopped():
 		attack()
 		$Attack.start()
-
+	if current_health==max_health/2 and Checker==0:
+		phase_two()
+		Checker=1
 func take_damage(amount: int):
 	current_health = max(0, current_health - amount)
 	$HitFlash.play("HitFlash")
@@ -50,6 +53,12 @@ func _on_body_entered(body):
 	if body.name.begins_with("WorldBorder"):
 		tween.kill()  # Stop movement
 		
+func phase_two():
+	
+	speed=600
+	$Attack.wait_time=3
+	
+	
 func die():
 	var pos = global_position 
 	$"../HP".queue_free()
