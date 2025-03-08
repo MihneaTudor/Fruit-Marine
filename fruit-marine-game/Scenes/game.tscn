@@ -14,7 +14,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
 font_size = 64
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssdrp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7dlh"]
 texture = ExtResource("4_02lo1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -32,7 +32,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_8v656"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_ssdrp")
+sources/0 = SubResource("TileSetAtlasSource_i7dlh")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_owwgt"]
 a = Vector2(609, 20.805)
@@ -115,6 +115,13 @@ position = Vector2(-2, -240)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D"]
 shape = SubResource("SegmentShape2D_owwgt")
 one_way_collision = true
+
+[node name="WorldBorderLeft" type="StaticBody2D" parent="Environment"]
+position = Vector2(-97, 126)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/WorldBorderLeft"]
+position = Vector2(9, 0)
+shape = SubResource("WorldBoundaryShape2D_60vjs")
 
 [node name="boss" parent="." instance=ExtResource("6_nvwlk")]
 position = Vector2(501, -48)

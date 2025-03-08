@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3fskvlt7m0ba"]
+[gd_scene load_steps=15 format=3 uid="uid://b3fskvlt7m0ba"]
 
 [ext_resource type="Script" path="res://Scripts/Dragon_Scene.gd" id="1_fmgl4"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_veusj"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="7_akagh"]
 [ext_resource type="PackedScene" uid="uid://covovdnt10k1g" path="res://Scenes/Dragon_Head.tscn" id="7_f03iy"]
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="8_pyhny"]
+[ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="9_gvabh"]
+[ext_resource type="AudioStream" uid="uid://cckxvvwk8ypo8" path="res://Scenes/70646_Dragon.mp3" id="10_e4mlh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy038"]
 texture = ExtResource("5_evfxc")
@@ -157,3 +159,16 @@ position = Vector2(439, -110)
 [node name="HP" parent="." instance=ExtResource("8_pyhny")]
 position = Vector2(0, 326.38)
 scale = Vector2(0.105, 0.02)
+
+[node name="Control" parent="." instance=ExtResource("9_gvabh")]
+modulate = Color(1, 1, 1, 0)
+offset_left = -1682.0
+offset_top = -1004.0
+offset_right = -1642.0
+offset_bottom = -964.0
+scale = Vector2(37.3971, 22.8272)
+
+[node name="Background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_e4mlh")
+volume_db = 4.0
+autoplay = true

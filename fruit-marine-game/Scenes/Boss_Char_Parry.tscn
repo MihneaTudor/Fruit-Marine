@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://bbc5bjlgpje61"]
+[gd_scene load_steps=28 format=3 uid="uid://bbc5bjlgpje61"]
 
 [ext_resource type="Script" path="res://Scripts/boss_parry.gd" id="1_www0x"]
 [ext_resource type="Texture2D" uid="uid://ctgk1r5o3u0yv" path="res://Assests/sprites/Top_SpriteSheet.png" id="2_8w1vk"]
 [ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_rqi3c"]
 [ext_resource type="Texture2D" uid="uid://bulov4y5gs8m5" path="res://Assests/sprites/Bottom_SpriteSheet.png" id="2_t53hh"]
 [ext_resource type="AudioStream" uid="uid://j5cowbqqajvx" path="res://Parry.wav" id="5_glegd"]
+[ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="6_lqxmd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlg4q"]
 resource_local_to_scene = true
@@ -276,3 +277,11 @@ autoplay = "HitFlash"
 [node name="Parry_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_glegd")
 volume_db = 10.0
+
+[node name="Control" parent="." instance=ExtResource("6_lqxmd")]
+modulate = Color(1, 1, 1, 0)
+offset_left = -1682.0
+offset_top = -1004.0
+offset_right = -1642.0
+offset_bottom = -964.0
+scale = Vector2(37.3971, 22.8272)

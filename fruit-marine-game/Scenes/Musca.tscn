@@ -1,0 +1,116 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcepwwqbw78bp"]
+
+[ext_resource type="Script" path="res://Scripts/Musca.gd" id="1_63dft"]
+[ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_2ipdw"]
+[ext_resource type="Texture2D" uid="uid://b77h4bo3ketq8" path="res://Assests/sprites/DragonHands.png" id="3_qrtiy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lo737"]
+resource_local_to_scene = true
+shader = ExtResource("2_2ipdw")
+shader_parameter/BooleanParameter = true
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnlkj"]
+atlas = ExtResource("3_qrtiy")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvhx1"]
+atlas = ExtResource("3_qrtiy")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mc8fd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnlkj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvhx1")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybc81"]
+size = Vector2(37.2961, 44.6875)
+
+[sub_resource type="Animation" id="Animation_fatsk"]
+resource_name = "HitFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7ykq6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yf6li"]
+_data = {
+"HitFlash": SubResource("Animation_fatsk"),
+"RESET": SubResource("Animation_7ykq6")
+}
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 128
+collision_mask = 3
+script = ExtResource("1_63dft")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_lo737")
+position = Vector2(9, -15.5)
+scale = Vector2(2.20313, 2.20313)
+sprite_frames = SubResource("SpriteFrames_mc8fd")
+animation = &"attack"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+position = Vector2(-0.0557823, -7.96879)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_ybc81")
+
+[node name="Timer_Intro" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="HitFlash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yf6li")
+}
+autoplay = "HitFlash"
+
+[node name="Attack" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -10,6 +10,9 @@ var time_left = 3  # Countdown starting number
 @onready var platforms = $Environment/TileMap2
 @onready var border1 = $"Environment/World Border Down/World Border Down/World Border Down"
 @onready var camera = $Camera2D  # Reference to the Camera2D
+@onready var player= $Player
+@onready var death_screen=$Control
+var checker=0
 var ok
 var already_freed = false
 
@@ -20,6 +23,12 @@ func _ready():
 
 func _process(delta: float) -> void:
 	
+	if player.current_health == 0 and  checker == 0:
+			ok=1
+			var tween = get_tree().create_tween()
+			tween.tween_property(death_screen, "modulate:a", 1.0, 3)
+			
+			
 	if not is_instance_valid(child_node) and not already_freed:
 		already_freed = true  
 		
