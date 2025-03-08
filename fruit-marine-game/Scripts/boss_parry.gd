@@ -112,6 +112,7 @@ func shoot1():
 func take_damage(amount: int):
 	if amount == 0:
 		$TopSprite.play("Parry")
+		$Parry_Sound.play()
 		return
 	current_health -= amount
 	$HitFlash.play("HitFlash")

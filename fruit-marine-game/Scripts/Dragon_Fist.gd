@@ -72,7 +72,7 @@ func attack():
 	if target == null:
 		print("Error: Target is null")
 		return
-		
+	$CollisionShape2D.disabled = false 
 	$AnimatedSprite2D.play("Idle")
 
 	pos = target.global_position  # ✅ Ensure position is updated correctly
@@ -110,7 +110,7 @@ func _on_body_entered(body):
 		
 func die():
 	$Jump_Indicator.visible = true
-	
+	$CollisionShape2D.disabled = true 
 	$Down_Time.start()
 	tween = create_tween()
 	
