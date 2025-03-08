@@ -12,12 +12,9 @@ var time_left = 3  # Countdown starting number
 @onready var camera = $Camera2D  # Reference to the Camera2D
 @onready var player= $Player
 @onready var death_screen=$Control
-@export var difficulty_offset = 1
 var checker=0
 var ok
 var already_freed = false
-
-@onready var holder =$"Bullet_Holder"
 
 func _ready():
 	label.text = str(time_left)  # Set the initial number
@@ -30,11 +27,11 @@ func _process(delta: float) -> void:
 			ok=1
 			var tween = get_tree().create_tween()
 			tween.tween_property(death_screen, "modulate:a", 1.0, 3)
-	
+			
 			
 	if not is_instance_valid(child_node) and not already_freed:
 		already_freed = true  
-		holder.queue_free()
+		
 		print("Child node was freed! Deleting static bodies...")
 		if is_instance_valid(static_body_1):
 			static_body_1.queue_free()
@@ -67,7 +64,7 @@ func PhaseTwo():
 
 	# ✅ Get camera's world position
 	var camera_center = camera.global_position  
-	
+
 	
 	# ✅ Instantiate left and right fists
 	var Dragon_Cap = Dragon_Cap.instantiate()

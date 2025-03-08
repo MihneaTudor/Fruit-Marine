@@ -13,7 +13,7 @@ var attacking = 0
 
 @export var time : float 
 @export var speed: float = 200.0
-var offset=1
+
 @onready var timer_intro = $Timer_Intro
 @onready var target = $"../../Player"
 
