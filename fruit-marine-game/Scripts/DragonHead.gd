@@ -2,10 +2,14 @@ extends Area2D
 
 var light = load("res://Scenes/White Circle.tscn")
 
-@export var max_health = 100
+var offset
 var current_health
+@export var max_health = 100
 
 func _ready() -> void:
+	var parent = get_parent()  # Get the parent node
+	offset = parent.difficulty_offset
+	max_health=max_health* offset
 	current_health = max_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

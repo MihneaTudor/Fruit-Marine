@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlf5bljonkmwi"]
+[gd_scene load_steps=6 format=3 uid="uid://da8ynswjiyq7t"]
 
 [ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_dpbit"]
 [ext_resource type="Texture2D" uid="uid://c8n5eul1mapva" path="res://Assests/sprites/DragonFire.png" id="2_k2t4q"]

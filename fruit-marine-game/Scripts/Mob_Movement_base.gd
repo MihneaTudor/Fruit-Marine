@@ -5,7 +5,7 @@ var tree = load("res://Scenes/Tree.tscn")
 var bullet = load("res://Scenes/boss_ammo.tscn")
 var bullet_big = load("res://Scenes/boss_ammo_big.tscn")
 var bullet_parry = load("res://Scenes/boss_ammo_parry.tscn")
-
+var offset
 var light = load("res://Scenes/White Circle.tscn")
 
 const Speed = 30
@@ -107,6 +107,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _ready():
+	var parent = get_parent()  # Get the parent node
+	offset = parent.difficulty_offset
+	max_health=max_health* offset
+	
 	current_health = max_health 
 	#current_health = max_health / 2 - 1
 	var t1 = randi() % 3

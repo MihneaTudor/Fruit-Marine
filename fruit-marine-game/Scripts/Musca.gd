@@ -13,7 +13,7 @@ var Checker=0
 
 @onready var timer_intro = $Timer_Intro
 @onready var target = $"../player"
-
+var offset
 
 var direction = 1
 var max_health = 10
@@ -21,7 +21,10 @@ var current_health: float = max_health  # ✅ Initialize health
 var tween: Tween
 
 func _ready():
-	pass
+	var parent = get_parent()  # Get the parent node
+	offset = parent.difficulty_offset
+	max_health=max_health* offset
+	current_health=max_health
 	
 func _physics_process(delta: float) -> void:
 	

@@ -13,7 +13,7 @@ var attacking = 0
 
 @export var time : float 
 @export var speed: float = 200.0
-
+var offset=1
 @onready var timer_intro = $Timer_Intro
 @onready var target = $"../../Player"
 
@@ -24,6 +24,9 @@ var pos = Vector2.ZERO  # ✅ Initialize pos to prevent null errors
 var tween: Tween
 
 func _ready():
+	var parent = get_parent().get_parent()  # Get the parent node
+	offset = parent.difficulty_offset
+	max_health=max_health* offset
 	$Delay.wait_time = time
 	$Delay.start()
 	$Jump_Indicator.scale.x *= sign(self.scale.x)

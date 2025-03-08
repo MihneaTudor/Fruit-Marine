@@ -2,7 +2,7 @@ extends Node
 
 @onready var label = $UI/Label  # Adjust the path to your Label node
 var time_left = 3  # Countdown starting number
-
+@export var difficlty_offset = 1
 func _ready():
 	label.text = str(time_left)  # Set the initial number
 	countdown()

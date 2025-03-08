@@ -9,7 +9,7 @@ var beam = load("res://Scenes/beam.tscn")
 @onready var target = $"../Player"
 @export var speed: float = 200.0
 @export var max_health = 10
-
+var offset
 var direction = 1
 var current_health: float
 var layer=1
@@ -22,7 +22,7 @@ var tween
 var posi
 var initial_rotatian
 var just_stopped = true
-
+@onready var holder= $"../Bullet_Holder"
 	
 	
 func _process(delta: float) -> void:
@@ -87,6 +87,9 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	
 func _ready():
+	var parent = get_parent()  # Get the parent node
+	offset = parent.difficulty_offset
+	max_health=max_health* offset
 	initial_rotatian = rotation_degrees
 	current_health = max_health 
 	layer = 1
@@ -114,7 +117,7 @@ func shoot1():
 		b= bullet_parry.instantiate()
 	b.name="BossAmmo" + str(rand + 1) + str(bullet_counter)
 	bullet_counter+=1
-	get_tree().current_scene.add_child(b)
+	holder.add_child(b)
 	b.global_transform = $Aim_Assist.global_transform
 	
 func die():
