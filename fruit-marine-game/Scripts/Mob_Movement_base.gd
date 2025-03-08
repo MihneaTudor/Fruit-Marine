@@ -107,10 +107,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _ready():
-	var parent = get_parent()  # Get the parent node
-	offset = parent.difficulty_offset
-	max_health=max_health* offset
-	
+	max_health
 	current_health = max_health 
 	#current_health = max_health / 2 - 1
 	var t1 = randi() % 3

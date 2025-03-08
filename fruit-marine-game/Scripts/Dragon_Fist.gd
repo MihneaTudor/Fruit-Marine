@@ -24,9 +24,6 @@ var pos = Vector2.ZERO  # ✅ Initialize pos to prevent null errors
 var tween: Tween
 
 func _ready():
-	var parent = get_parent().get_parent()  # Get the parent node
-	offset = parent.difficulty_offset
-	max_health=max_health* offset
 	$Delay.wait_time = time
 	$Delay.start()
 	$Jump_Indicator.scale.x *= sign(self.scale.x)
