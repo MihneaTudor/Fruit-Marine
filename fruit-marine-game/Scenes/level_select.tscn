@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4ms2l4mw5c30"]
+[gd_scene load_steps=7 format=3 uid="uid://c4ms2l4mw5c30"]
 
 [ext_resource type="PackedScene" uid="uid://dp8hbwmcaog46" path="res://Scenes/player_level_select.tscn" id="1_52t02"]
 [ext_resource type="Texture2D" uid="uid://cc44ttfrh0qes" path="res://Assests/sprites/world_tileset.png" id="2_myo2x"]
 [ext_resource type="PackedScene" uid="uid://n65iplsh3bpt" path="res://Scenes/levelSelector.tscn" id="3_t6oco"]
+[ext_resource type="AudioStream" uid="uid://3u6dyb5ec6sq" path="res://Background_LevelSelet.mp3" id="4_5kd23"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sgtb0"]
 texture = ExtResource("2_myo2x")
@@ -160,3 +161,7 @@ layer_0/tile_data = PackedInt32Array(-1, 196608, 1, -2, 196608, 0, 65534, 196608
 [node name="Node2D" parent="." instance=ExtResource("3_t6oco")]
 position = Vector2(8, 72)
 level = "res://Scenes/game.tscn"
+
+[node name="Background music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5kd23")
+volume_db = 4.0

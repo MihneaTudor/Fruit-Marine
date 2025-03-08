@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnwkxyttqpq3a"]
+[gd_scene load_steps=16 format=3 uid="uid://dnwkxyttqpq3a"]
 
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_hhg6o"]
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_m3uq1"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://cb75gfb35g4sn" path="res://Assests/sprites/TileMap.png" id="4_02lo1"]
 [ext_resource type="PackedScene" uid="uid://bvbtnribt1fc2" path="res://Scenes/Boss_Template_V2.tscn" id="6_nvwlk"]
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="7_txy54"]
+[ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="9_e34a6"]
+[ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="10_dwjeq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
+font_size = 64
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssdrp"]
 texture = ExtResource("4_02lo1")
@@ -43,6 +48,8 @@ script = ExtResource("1_m3uq1")
 follow_viewport_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI" node_paths=PackedStringArray("player")]
+z_index = 3
+z_as_relative = false
 offset_left = -613.0
 offset_top = -348.0
 offset_right = -509.0
@@ -52,7 +59,7 @@ alignment = 1
 script = ExtResource("1_hhg6o")
 HeartFull = ExtResource("3_sftiq")
 HeartEmpty = ExtResource("3_i7jr5")
-player = NodePath("../../CharacterBody2D")
+player = NodePath("../../player")
 
 [node name="Heart1" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
@@ -67,12 +74,13 @@ layout_mode = 2
 texture = ExtResource("3_sftiq")
 
 [node name="Label" type="Label" parent="UI"]
-offset_left = -105.0
-offset_top = -186.0
-offset_right = -65.0
-offset_bottom = -141.0
+offset_left = -66.0
+offset_top = -189.0
+offset_right = -26.0
+offset_bottom = -144.0
 scale = Vector2(3.64723, 5.50432)
 theme_override_font_sizes/font_size = 32
+label_settings = SubResource("LabelSettings_82bbt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -112,7 +120,8 @@ one_way_collision = true
 position = Vector2(501, -48)
 max_health = 85
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_ufoxo")]
+[node name="player" parent="." instance=ExtResource("1_ufoxo")]
+z_index = 0
 position = Vector2(-576, 202)
 scale = Vector2(3, 3)
 
@@ -124,3 +133,16 @@ zoom = Vector2(1.5, 1.5)
 [node name="HP" parent="." instance=ExtResource("7_txy54")]
 position = Vector2(0, 326.38)
 scale = Vector2(0.105, 0.02)
+
+[node name="Background music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_e34a6")
+volume_db = 2.0
+autoplay = true
+
+[node name="Control" parent="." instance=ExtResource("10_dwjeq")]
+modulate = Color(1, 1, 1, 0)
+offset_left = -1682.0
+offset_top = -1004.0
+offset_right = -1642.0
+offset_bottom = -964.0
+scale = Vector2(37.3971, 22.8272)

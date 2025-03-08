@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbc5bjlgpje61"]
+[gd_scene load_steps=27 format=3 uid="uid://bbc5bjlgpje61"]
 
 [ext_resource type="Script" path="res://Scripts/boss_parry.gd" id="1_www0x"]
 [ext_resource type="Texture2D" uid="uid://ctgk1r5o3u0yv" path="res://Assests/sprites/Top_SpriteSheet.png" id="2_8w1vk"]
 [ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_rqi3c"]
 [ext_resource type="Texture2D" uid="uid://bulov4y5gs8m5" path="res://Assests/sprites/Bottom_SpriteSheet.png" id="2_t53hh"]
+[ext_resource type="AudioStream" uid="uid://j5cowbqqajvx" path="res://Parry.wav" id="5_glegd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlg4q"]
 resource_local_to_scene = true
@@ -271,3 +272,7 @@ libraries = {
 "": SubResource("AnimationLibrary_e66ai")
 }
 autoplay = "HitFlash"
+
+[node name="Parry_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_glegd")
+volume_db = 10.0

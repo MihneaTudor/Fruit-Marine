@@ -1,10 +1,13 @@
-[gd_scene load_steps=39 format=3 uid="uid://dkayc8u0sdaud"]
+[gd_scene load_steps=42 format=3 uid="uid://dkayc8u0sdaud"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_5al3x"]
 [ext_resource type="Texture2D" uid="uid://bulov4y5gs8m5" path="res://Assests/sprites/Bottom_SpriteSheet.png" id="2_gpwtj"]
 [ext_resource type="Texture2D" uid="uid://ctgk1r5o3u0yv" path="res://Assests/sprites/Top_SpriteSheet.png" id="3_xew1s"]
 [ext_resource type="Texture2D" uid="uid://d517mcellcnw" path="res://Assests/sprites/F_Press.png" id="4_0clhk"]
 [ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="4_og3kp"]
+[ext_resource type="AudioStream" uid="uid://j5cowbqqajvx" path="res://Parry.wav" id="6_5ypmx"]
+[ext_resource type="AudioStream" uid="uid://b1no0q44omf12" path="res://Shoot.wav" id="7_fx1x4"]
+[ext_resource type="AudioStream" uid="uid://2gsaxeoo1jen" path="res://Scenes/Damage_Taking_Player.wav" id="8_34snp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwq0g"]
 resource_local_to_scene = true
@@ -356,3 +359,16 @@ autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_kqk1b")
 }
+
+[node name="Parry_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5ypmx")
+volume_db = 24.0
+autoplay = true
+
+[node name="Shooting_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fx1x4")
+volume_db = 24.0
+
+[node name="Damage_Take_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_34snp")
+volume_db = 24.0

@@ -8,7 +8,9 @@ var bullet = load("res://Scenes/glont_template.tscn")
 @export var  shootTime: float = 0.1
 @export var max_health: int = 3
 @export var damage = 1
-
+@onready var parry_sound = $Parry_Sound
+@onready var shooting_sound = $Shooting_Sound
+@onready var damage_take_sound = $Damage_Take_Sound
 @onready var detection_area = $Area2D  # Reference to the Area2D child
 
 var orientation = 1
@@ -21,7 +23,8 @@ func _ready():
 	#health_changed.emit(current_health)  # Emit signal for UI
 	
 func take_damage(amount: int):
-	current_health = amount
+	damage_take_sound.play()
+	current_health -= amount
 	current_health = max(0, current_health)  # Prevent negative HP
 	#health_changed.emit(current_health)
 	if current_health == 0:
@@ -93,6 +96,7 @@ func _physics_process(delta: float) -> void:
 	
 	#Handle Animations
 	if Input.is_action_just_pressed("Parry"):
+		parry_sound.play()
 		$TopSprite.play("Parry")
 	if $TopSprite.animation == "Parry" and $TopSprite.frame == 3:
 		$TopSprite.play("Idle")
@@ -122,6 +126,8 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	$TopSprite.play("Shooting")
+	shooting_sound.pitch_scale= randf_range(0.5, 0.7)
+	shooting_sound.play()
 	var b = bullet.instantiate()
 	b.damage = damage
 	owner.add_child(b)
@@ -129,7 +135,7 @@ func shoot():
 	$Timer.start()
 	
 func die():
-	get_node("CollisionShape2D").queue_free()
+	set_process_input(false)
 	
 func drop():
 	position.y += 3

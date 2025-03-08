@@ -6,7 +6,11 @@ extends HBoxContainer
 
 func _process(delta: float) -> void:
 	#player.get_script().health_changed.connect(update_hearts)
-	update_hearts(player.current_health)
+	if player.current_health==0:
+		queue_free()
+	if player:
+		update_hearts(player.current_health)
+	
 
 func update_hearts(health):
 	for i in range(get_child_count()):
