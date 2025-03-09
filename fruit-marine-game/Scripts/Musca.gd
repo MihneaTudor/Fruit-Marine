@@ -14,26 +14,20 @@ var speed: float = 400
 
 @onready var timer_intro = $Timer_Intro
 @onready var target = $"../player"
-<<<<<<< Updated upstream
+
 var offset = 1
 
-var direction = 1
 @export var max_health = 50
-=======
-
 var direction = 1
-var max_health = 80
->>>>>>> Stashed changes
+
+
 var current_health: float = max_health  # ✅ Initialize health
 var tween: Tween
 
 func _ready():
-<<<<<<< Updated upstream
 	var parent = get_parent()  # Get the parent node
 	#offset = parent.difficulty_offset
 	max_health=max_health* offset
-=======
->>>>>>> Stashed changes
 	current_health=max_health
 	
 func _physics_process(delta: float) -> void:
@@ -46,16 +40,15 @@ func _physics_process(delta: float) -> void:
 	if current_health==max_health/2 and Checker==0:
 		phase_two()
 		Checker=1
-<<<<<<< Updated upstream
 		
 	if current_health == 0:
 		die()
 		
-=======
+
 	if current_health==0 and test==0:
 		test=1
 		die()
->>>>>>> Stashed changes
+
 func take_damage(amount: int):
 	current_health = max(0, current_health - amount)
 	$HitFlash.play("HitFlash")
@@ -92,7 +85,7 @@ func phase_two():
 	
 	#duration = 1
 	speed=750
-	$Attack.wait_time=1.5
+	$Attack.wait_time=2.5
 	
 	
 func die():
