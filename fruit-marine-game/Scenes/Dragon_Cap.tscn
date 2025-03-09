@@ -1,5 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bvlqebt3k6p22"]
 
+<<<<<<< Updated upstream
+=======
+[ext_resource type="Script" path="res://Scripts/DragonHead.gd" id="1_3esy2"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://ba4u6avdleti2" path="res://Assests/sprites/DragonHead.png" id="2_ip3gs"]
 [ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_rruqd"]
 [ext_resource type="PackedScene" uid="uid://c0yu3qhlx5xuv" path="res://Scenes/Dragon_Fist1.tscn" id="2_w1gbw"]
@@ -55,6 +59,10 @@ position = Vector2(-150, 41)
 scale = Vector2(3.2, 3.2)
 collision_layer = 128
 collision_mask = 6
+<<<<<<< Updated upstream
+=======
+script = ExtResource("1_3esy2")
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -30.3125)

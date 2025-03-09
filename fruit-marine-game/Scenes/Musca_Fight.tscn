@@ -641,6 +641,14 @@ rotation = 4.70756
 position = Vector2(9, 0)
 shape = SubResource("WorldBoundaryShape2D_60vjs")
 
+[node name="WorldBorderUp" type="StaticBody2D" parent="Environment"]
+position = Vector2(-100, -268.195)
+rotation = -3.12399
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/WorldBorderUp"]
+position = Vector2(9, 0)
+shape = SubResource("WorldBoundaryShape2D_60vjs")
+
 [node name="player" parent="." instance=ExtResource("6_wufoe")]
 z_index = 0
 position = Vector2(-576, 202)

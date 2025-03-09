@@ -64,7 +64,7 @@ func PhaseTwo():
 
 	# ✅ Get camera's world position
 	var camera_center = camera.global_position  
-
+	
 	
 	# ✅ Instantiate left and right fists
 	var Dragon_Cap = Dragon_Cap.instantiate()
