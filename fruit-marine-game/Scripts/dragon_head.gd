@@ -6,7 +6,8 @@ var bullet = load("res://Scenes/dragon_ammo.tscn")
 var bullet_parry = load("res://Scenes/dragon_ammo_parry.tscn")
 var beam = load("res://Scenes/beam.tscn")
 
-@onready var target = $"../Player"
+@onready var holder = $"../Bullet_Holder"
+@onready var target = $"../player"
 @export var speed: float = 200.0
 @export var max_health = 10
 
@@ -97,6 +98,7 @@ func take_damage(amount: int):
 	current_health = max(0, current_health)  # Prevent negative HP
 	$HitFlash.play("HitFlash")
 	#health_changed.emit(current_health)
+	
 func ZeBeam():
 	var Ammo=beam.instantiate()
 	add_child(Ammo)
@@ -112,13 +114,15 @@ func shoot1():
 		b= bullet.instantiate()
 	if rand == 1:
 		b= bullet_parry.instantiate()
+	
 	b.name="BossAmmo" + str(rand + 1) + str(bullet_counter)
 	bullet_counter+=1
-	get_tree().current_scene.add_child(b)
+	holder.add_child(b)
 	b.global_transform = $Aim_Assist.global_transform
 	
 func die():
 	var pos = global_position 
+	holder.queue_free()
 	$"../HP".queue_free()
 	queue_free()
 	

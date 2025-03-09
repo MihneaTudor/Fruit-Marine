@@ -15,7 +15,7 @@ var attacking = 0
 @export var speed: float = 200.0
 
 @onready var timer_intro = $Timer_Intro
-@onready var target = $"../../Player"
+@onready var target = $"../../player"
 
 var direction = 1
 var max_health = 10
@@ -72,14 +72,14 @@ func attack():
 	if target == null:
 		print("Error: Target is null")
 		return
-	$CollisionShape2D.disabled = false 
+	
 	$AnimatedSprite2D.play("Idle")
 
 	pos = target.global_position  # ✅ Ensure position is updated correctly
 
 	if tween:
 		tween.kill()  # ✅ Ensure no other tween is interfering
-
+	$CollisionShape2D.disabled = false 
 	tween = create_tween()
 	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 1.5)
 	$Targeting.start()
@@ -105,7 +105,7 @@ func move_up():
 	tween.tween_property(self, "global_position", Vector2(pos.x, -140), 1)
 
 func _on_body_entered(body): 
-	if body.name == "Player":
+	if body.name == "player":
 		body.take_damage(1)
 		
 func die():

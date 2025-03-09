@@ -536,7 +536,7 @@ sources/1 = SubResource("TileSetAtlasSource_0s1v6")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_60vjs"]
 distance = -133.0
 
-[node name="Node2D2" type="Node2D"]
+[node name="Boss_Parry" type="Node2D"]
 script = ExtResource("1_r64qf")
 
 [node name="UI" type="CanvasLayer" parent="."]

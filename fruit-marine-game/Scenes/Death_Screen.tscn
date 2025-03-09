@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpaxy0xmofuam"]
+[gd_scene load_steps=3 format=3 uid="uid://cpaxy0xmofuam"]
+
+[ext_resource type="Script" path="res://Scripts/death_screen.gd" id="1_lx4i3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0yel"]
 font_size = 64
@@ -19,6 +21,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(185.771, 185.771)
+script = ExtResource("1_lx4i3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -35,3 +38,7 @@ offset_bottom = 104.343
 scale = Vector2(0.0828404, 0.0816308)
 text = "You Died :("
 label_settings = SubResource("LabelSettings_e0yel")
+
+[node name="Teleport" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

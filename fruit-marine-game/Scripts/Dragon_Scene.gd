@@ -12,6 +12,7 @@ var time_left = 3  # Countdown starting number
 @onready var camera = $Camera2D  # Reference to the Camera2D
 @onready var player= $player
 @onready var death_screen=$Control
+
 var checker=0
 var ok
 var already_freed = false
@@ -68,7 +69,8 @@ func PhaseTwo():
 	
 	# ✅ Instantiate left and right fists
 	var Dragon_Cap = Dragon_Cap.instantiate()
-
+	
+	
 	# ✅ Set Dragon_Cap position to the floor level of the camera
 	var floor_y = camera_center.y + 200  # Adjust this value for floor position
 	Dragon_Cap.global_position = Vector2(camera_center.x, floor_y)
