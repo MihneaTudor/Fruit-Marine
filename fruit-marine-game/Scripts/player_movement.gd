@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var bullet = load("res://Scenes/glont_template.tscn")
+@export var bullet = load("res://Scenes/glont_template.tscn")
 
 
 @export var SPEED: float = 300.0

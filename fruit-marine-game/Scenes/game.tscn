@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnwkxyttqpq3a"]
+[gd_scene load_steps=18 format=3 uid="uid://dnwkxyttqpq3a"]
 
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_hhg6o"]
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_m3uq1"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cb75gfb35g4sn" path="res://Assests/sprites/TileMap.png" id="4_02lo1"]
 [ext_resource type="PackedScene" uid="uid://bvbtnribt1fc2" path="res://Scenes/Boss_Template_V2.tscn" id="6_nvwlk"]
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="7_txy54"]
+[ext_resource type="PackedScene" uid="uid://djnygr48dci5i" path="res://Scenes/Tree_lemon.tscn" id="7_xeamw"]
+[ext_resource type="PackedScene" uid="uid://u45cwl43rl3d" path="res://Scenes/glont_template.tscn" id="8_iu5bh"]
 [ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="9_e34a6"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="10_dwjeq"]
 
@@ -125,12 +127,14 @@ shape = SubResource("WorldBoundaryShape2D_60vjs")
 
 [node name="boss" parent="." instance=ExtResource("6_nvwlk")]
 position = Vector2(501, -48)
+tree = ExtResource("7_xeamw")
 max_health = 85
 
 [node name="player" parent="." instance=ExtResource("1_ufoxo")]
 z_index = 0
 position = Vector2(-576, 202)
 scale = Vector2(3, 3)
+bullet = ExtResource("8_iu5bh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -14)

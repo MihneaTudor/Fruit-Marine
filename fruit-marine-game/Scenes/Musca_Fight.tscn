@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3yvsg8u3076b"]
+[gd_scene load_steps=18 format=3 uid="uid://d3yvsg8u3076b"]
 
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_bd126"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_vxhrm"]
@@ -6,10 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://wbhox3r32lx2" path="res://Assests/sprites/HeartEmpty.png" id="4_pnas3"]
 [ext_resource type="Texture2D" uid="uid://cb75gfb35g4sn" path="res://Assests/sprites/TileMap.png" id="5_tan00"]
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="6_wufoe"]
+[ext_resource type="PackedScene" uid="uid://d1uaxkgntornb" path="res://Scenes/glont_template_lemon.tscn" id="7_8jvio"]
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="7_ntdd2"]
 [ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="8_y5ag4"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="9_n3efw"]
 [ext_resource type="PackedScene" uid="uid://bcepwwqbw78bp" path="res://Scenes/Musca.tscn" id="10_3tb8m"]
+[ext_resource type="PackedScene" uid="uid://bqkb40ohxj7cs" path="res://Scenes/Tree_cherries.tscn" id="12_ulgfi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
 font_size = 64
@@ -124,6 +126,14 @@ rotation = 1.54907
 position = Vector2(9, 0)
 shape = SubResource("WorldBoundaryShape2D_60vjs")
 
+[node name="WorldBorderRight2" type="StaticBody2D" parent="Environment"]
+position = Vector2(6, -278.195)
+rotation = 3.13193
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/WorldBorderRight2"]
+position = Vector2(9, 0)
+shape = SubResource("WorldBoundaryShape2D_60vjs")
+
 [node name="WorldBorderRight" type="StaticBody2D" parent="Environment"]
 position = Vector2(504, 135.805)
 rotation = 4.70756
@@ -136,6 +146,7 @@ shape = SubResource("WorldBoundaryShape2D_60vjs")
 z_index = 0
 position = Vector2(-576, 202)
 scale = Vector2(3, 3)
+bullet = ExtResource("7_8jvio")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -14)
@@ -161,3 +172,4 @@ scale = Vector2(37.3971, 22.8272)
 
 [node name="boss" parent="." instance=ExtResource("10_3tb8m")]
 position = Vector2(440, -52)
+tree = ExtResource("12_ulgfi")

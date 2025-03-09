@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://qte2wfnry5m1"]
+[gd_scene load_steps=14 format=3 uid="uid://qte2wfnry5m1"]
 
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_2nwyv"]
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_r64qf"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cb75gfb35g4sn" path="res://Assests/sprites/TileMap.png" id="4_q4n8s"]
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="5_mtjct"]
 [ext_resource type="PackedScene" uid="uid://bbc5bjlgpje61" path="res://Scenes/Boss_Char_Parry.tscn" id="6_jmgkd"]
+[ext_resource type="PackedScene" uid="uid://dfkam8rdn67ih" path="res://Scenes/glont_template_cherries.tscn" id="7_03r56"]
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="7_qc6ex"]
+[ext_resource type="PackedScene" uid="uid://7cq7wfvw3ckv" path="res://Scenes/Tree_orange.tscn" id="9_li1iw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_napmg"]
 texture = ExtResource("4_q4n8s")
@@ -48,7 +50,7 @@ alignment = 1
 script = ExtResource("1_2nwyv")
 HeartFull = ExtResource("2_xn5v4")
 HeartEmpty = ExtResource("3_ui8kx")
-player = NodePath("../../Player")
+player = NodePath("../../player")
 
 [node name="Heart1" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
@@ -89,9 +91,10 @@ position = Vector2(-97, 126)
 position = Vector2(9, 0)
 shape = SubResource("WorldBoundaryShape2D_60vjs")
 
-[node name="Player" parent="." instance=ExtResource("5_mtjct")]
+[node name="player" parent="." instance=ExtResource("5_mtjct")]
 position = Vector2(-576, 202)
 scale = Vector2(3, 3)
+bullet = ExtResource("7_03r56")
 damage = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -101,6 +104,7 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="boss" parent="." instance=ExtResource("6_jmgkd")]
 position = Vector2(472, 161)
+tree = ExtResource("9_li1iw")
 max_health = 20
 
 [node name="HP" parent="." instance=ExtResource("7_qc6ex")]

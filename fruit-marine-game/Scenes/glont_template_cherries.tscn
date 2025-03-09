@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfkam8rdn67ih"]
+
+[ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_g31tm"]
+[ext_resource type="Texture2D" uid="uid://c2ys5ojdsi7bp" path="res://Assests/sprites/Cherries.png" id="2_6ksvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utefw"]
+atlas = ExtResource("2_6ksvb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6xbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utefw")
+}],
+"loop": true,
+"name": &"Bullet",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avo4d"]
+radius = 5.09902
+
+[node name="Glont_Template" type="Area2D"]
+collision_mask = 132
+script = ExtResource("1_g31tm")
+speed = 250
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b6xbd")
+animation = &"Bullet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_avo4d")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

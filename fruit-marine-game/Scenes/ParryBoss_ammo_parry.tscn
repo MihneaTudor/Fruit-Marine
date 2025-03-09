@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbmmyjpq7aom"]
+
+[ext_resource type="Script" path="res://Scripts/glont_zburat.gd" id="1_aq61v"]
+[ext_resource type="Texture2D" uid="uid://bwx12scn04874" path="res://Assests/sprites/RottenApple.png" id="2_dfeor"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fxth"]
+atlas = ExtResource("2_dfeor")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb56a"]
+atlas = ExtResource("2_dfeor")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55xfl"]
+atlas = ExtResource("2_dfeor")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn6qv"]
+atlas = ExtResource("2_dfeor")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6xbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fxth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb56a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55xfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn6qv")
+}],
+"loop": true,
+"name": &"Bullet",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avo4d"]
+radius = 9.0
+
+[node name="boss_ammo" type="Area2D"]
+scale = Vector2(1, -1)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_aq61v")
+speed = 150
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(1.75465, 1.75465)
+sprite_frames = SubResource("SpriteFrames_b6xbd")
+animation = &"Bullet"
+autoplay = "Bullet"
+frame_progress = 0.811581
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_avo4d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

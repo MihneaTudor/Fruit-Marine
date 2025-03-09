@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3fskvlt7m0ba"]
+[gd_scene load_steps=16 format=3 uid="uid://b3fskvlt7m0ba"]
 
 [ext_resource type="Script" path="res://Scripts/Dragon_Scene.gd" id="1_fmgl4"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_veusj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cb75gfb35g4sn" path="res://Assests/sprites/TileMap.png" id="5_evfxc"]
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="7_akagh"]
 [ext_resource type="PackedScene" uid="uid://covovdnt10k1g" path="res://Scenes/Dragon_Head.tscn" id="7_f03iy"]
+[ext_resource type="PackedScene" uid="uid://uofbk7l3f5r2" path="res://Scenes/glont_template_orange.tscn" id="7_sdama"]
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="8_pyhny"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="9_gvabh"]
 [ext_resource type="AudioStream" uid="uid://cckxvvwk8ypo8" path="res://Scenes/70646_Dragon.mp3" id="10_e4mlh"]
@@ -54,7 +55,7 @@ alignment = 1
 script = ExtResource("2_veusj")
 HeartFull = ExtResource("3_ua83u")
 HeartEmpty = ExtResource("4_mykef")
-player = NodePath("../../Player")
+player = NodePath("../../player")
 
 [node name="Heart1" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
@@ -140,9 +141,10 @@ position = Vector2(0, 0.000526428)
 shape = SubResource("SegmentShape2D_owwgt")
 one_way_collision = true
 
-[node name="Player" parent="." instance=ExtResource("7_akagh")]
+[node name="player" parent="." instance=ExtResource("7_akagh")]
 position = Vector2(-576, 202)
 scale = Vector2(3, 3)
+bullet = ExtResource("7_sdama")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -14)

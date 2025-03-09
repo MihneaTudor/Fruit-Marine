@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcepwwqbw78bp"]
+[gd_scene load_steps=15 format=3 uid="uid://bcepwwqbw78bp"]
 
 [ext_resource type="Script" path="res://Scripts/Musca.gd" id="1_63dft"]
 [ext_resource type="Shader" uid="uid://bkw0jb7jwlu8q" path="res://Scenes/Damage.tres" id="2_2ipdw"]
-[ext_resource type="Texture2D" uid="uid://b77h4bo3ketq8" path="res://Assests/sprites/DragonHands.png" id="3_qrtiy"]
+[ext_resource type="Texture2D" uid="uid://sjto0x3h0swg" path="res://Assests/sprites/MutantFly.png" id="3_ajfjw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lo737"]
 resource_local_to_scene = true
@@ -10,19 +10,40 @@ shader = ExtResource("2_2ipdw")
 shader_parameter/BooleanParameter = true
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vnlkj"]
-atlas = ExtResource("3_qrtiy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnreb"]
+atlas = ExtResource("3_ajfjw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7djn"]
+atlas = ExtResource("3_ajfjw")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvhx1"]
-atlas = ExtResource("3_qrtiy")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5hqy"]
+atlas = ExtResource("3_ajfjw")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmah2"]
+atlas = ExtResource("3_ajfjw")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88bux"]
+atlas = ExtResource("3_ajfjw")
+region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mc8fd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vnlkj")
+"texture": SubResource("AtlasTexture_gnreb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7djn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5hqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmah2")
 }],
 "loop": true,
 "name": &"Idle",
@@ -30,7 +51,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vvhx1")
+"texture": SubResource("AtlasTexture_88bux")
 }],
 "loop": true,
 "name": &"attack",
@@ -38,7 +59,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybc81"]
-size = Vector2(37.2961, 44.6875)
+size = Vector2(50.6666, 22.6667)
 
 [sub_resource type="Animation" id="Animation_fatsk"]
 resource_name = "HitFlash"
@@ -78,7 +99,7 @@ _data = {
 }
 
 [node name="Area2D" type="Area2D"]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 collision_layer = 128
 collision_mask = 3
 script = ExtResource("1_63dft")
@@ -90,10 +111,11 @@ scale = Vector2(2.20313, 2.20313)
 sprite_frames = SubResource("SpriteFrames_mc8fd")
 animation = &"attack"
 autoplay = "Idle"
+frame_progress = 0.258155
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
-position = Vector2(-0.0557823, -7.96879)
+position = Vector2(20, -18)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_ybc81")
 
@@ -102,15 +124,15 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="Attack" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="HitFlash" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_yf6li")
 }
 autoplay = "HitFlash"
-
-[node name="Attack" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

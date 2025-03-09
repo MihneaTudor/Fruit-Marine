@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-var tree = load("res://Scenes/Tree.tscn")
+@export var tree = load("res://Scenes/Tree.tscn")
 
-var bullet = load("res://Scenes/boss_ammo.tscn")
-var bullet_parry = load("res://Scenes/boss_ammo_parry.tscn")
+var bullet = load("res://Scenes/ParryBoss_ammo.tscn")
+var bullet_parry = load("res://Scenes/ParryBoss_ammo_parry.tscn")
 
 var light = load("res://Scenes/White Circle.tscn")
 

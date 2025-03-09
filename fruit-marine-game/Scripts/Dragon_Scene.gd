@@ -10,7 +10,7 @@ var time_left = 3  # Countdown starting number
 @onready var platforms = $Environment/TileMap2
 @onready var border1 = $"Environment/World Border Down/World Border Down/World Border Down"
 @onready var camera = $Camera2D  # Reference to the Camera2D
-@onready var player= $Player
+@onready var player= $player
 @onready var death_screen=$Control
 var checker=0
 var ok
