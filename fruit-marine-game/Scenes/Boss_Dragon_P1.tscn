@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3fskvlt7m0ba"]
+[gd_scene load_steps=24 format=3 uid="uid://b3fskvlt7m0ba"]
 
 [ext_resource type="Script" path="res://Scripts/Dragon_Scene.gd" id="1_fmgl4"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_veusj"]
@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="9_gvabh"]
 [ext_resource type="AudioStream" uid="uid://cckxvvwk8ypo8" path="res://Scenes/70646_Dragon.mp3" id="10_e4mlh"]
 [ext_resource type="Texture2D" uid="uid://cdp1fbbiyxiwc" path="res://Assests/Background_0.png" id="12_vln1f"]
-[ext_resource type="PackedScene" uid="uid://cqmklogyge0km" path="res://Scenes/campaign_menu.tscn" id="15_dgpd2"]
+[ext_resource type="PackedScene" path="res://Scenes/campaign_menu.tscn" id="15_dgpd2"]
+[ext_resource type="AudioStream" uid="uid://dr3xwl7wbotl2" path="res://dragon-roar-high-intensity-36564-[AudioTrimmer.com].mp3" id="16_8vmjw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy038"]
 texture = ExtResource("5_evfxc")
@@ -810,3 +811,7 @@ z_index = 111
 position = Vector2(0, -11.895)
 scale = Vector2(0.68, 0.68)
 campaign = "res://Scenes/level_select_4.tscn"
+
+[node name="Roar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_8vmjw")
+volume_db = 14.0

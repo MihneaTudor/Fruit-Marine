@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dqc7lgswnjn7g"]
+[gd_scene load_steps=22 format=3 uid="uid://dqc7lgswnjn7g"]
 
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_c77j4"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_vr3wb"]
@@ -8,13 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bvbtnribt1fc2" path="res://Scenes/Boss_Template_V2.tscn" id="6_q5gxt"]
 [ext_resource type="Script" path="res://Scripts/Endless_game.gd" id="7_0by86"]
 [ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="8_5h2pw"]
+[ext_resource type="PackedScene" uid="uid://ctvic1db6xqiv" path="res://Scenes/Endless_Tree.tscn" id="8_nypoh"]
 [ext_resource type="PackedScene" uid="uid://u45cwl43rl3d" path="res://Scenes/glont_template.tscn" id="9_xq668"]
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="10_4g8j4"]
 [ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="11_nxe17"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="12_i6cke"]
 [ext_resource type="Script" path="res://Scenes/Endless_death_screen.gd" id="13_7ktql"]
 [ext_resource type="Texture2D" uid="uid://fprfdeqapxdi" path="res://Assests/sprites/Background.png" id="13_mqb22"]
-[ext_resource type="PackedScene" uid="uid://d30mcut6pooad" path="res://Scenes/endless_menu.tscn" id="15_fyfis"]
+[ext_resource type="PackedScene" path="res://Scenes/endless_menu.tscn" id="15_fyfis"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
 font_size = 64
@@ -131,6 +132,7 @@ shape = SubResource("WorldBoundaryShape2D_60vjs")
 [node name="boss" parent="." instance=ExtResource("6_q5gxt")]
 position = Vector2(501, -48)
 script = ExtResource("7_0by86")
+tree = ExtResource("8_nypoh")
 
 [node name="player" parent="." instance=ExtResource("8_5h2pw")]
 z_index = 0

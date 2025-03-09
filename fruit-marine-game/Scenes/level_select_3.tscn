@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ys5ojdsi7bp" path="res://Assests/sprites/Cherries.png" id="10_hyglu"]
 [ext_resource type="Texture2D" uid="uid://bwdqpwtim2qyd" path="res://Assests/sprites/Orange.png" id="11_j0g7v"]
 [ext_resource type="Texture2D" uid="uid://ttpjm8u3kdso" path="res://Assests/sprites/Pear.png" id="12_28ypb"]
-[ext_resource type="PackedScene" uid="uid://d30mcut6pooad" path="res://Scenes/endless_menu.tscn" id="13_r1syx"]
+[ext_resource type="PackedScene" path="res://Scenes/endless_menu.tscn" id="13_r1syx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyoos"]
 texture = ExtResource("3_6hwns")
@@ -775,3 +775,8 @@ text = "Menu"
 position = Vector2(-86.6578, 73.6591)
 scale = Vector2(4.33289, 4.33289)
 sprite_frames = SubResource("SpriteFrames_3rrqj")
+
+[node name="Background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_tyq0o")
+volume_db = 5.0
+autoplay = true

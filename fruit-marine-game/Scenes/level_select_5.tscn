@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ys5ojdsi7bp" path="res://Assests/sprites/Cherries.png" id="7_p2wby"]
 [ext_resource type="Texture2D" uid="uid://bwdqpwtim2qyd" path="res://Assests/sprites/Orange.png" id="8_g8428"]
 [ext_resource type="Texture2D" uid="uid://ttpjm8u3kdso" path="res://Assests/sprites/Pear.png" id="9_2hrti"]
-[ext_resource type="PackedScene" uid="uid://d30mcut6pooad" path="res://Scenes/endless_menu.tscn" id="10_m7l6u"]
+[ext_resource type="PackedScene" path="res://Scenes/endless_menu.tscn" id="10_m7l6u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyoos"]
 texture = ExtResource("3_fesjt")
@@ -463,3 +463,8 @@ theme_override_font_sizes/font_size = 64
 text = "CONGRATULATIONS!
 you saved the forest"
 horizontal_alignment = 1
+
+[node name="Background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_uya70")
+volume_db = 5.0
+autoplay = true

@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="9_e34a6"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="10_dwjeq"]
 [ext_resource type="Texture2D" uid="uid://fprfdeqapxdi" path="res://Assests/sprites/Background.png" id="13_gvugm"]
-[ext_resource type="PackedScene" uid="uid://cqmklogyge0km" path="res://Scenes/campaign_menu.tscn" id="14_pb5t3"]
+[ext_resource type="PackedScene" path="res://Scenes/campaign_menu.tscn" id="14_pb5t3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
 font_size = 64

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceobfceipqhm1"]
+[gd_scene load_steps=4 format=3 uid="uid://bxlrf3xhbag4v"]
 
 [ext_resource type="Texture2D" uid="uid://5tox2d5362gi" path="res://Assests/FruitMarine_Manu.png" id="1_0kwhq"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_cm8jw"]
+[ext_resource type="AudioStream" uid="uid://3u6dyb5ec6sq" path="res://Background_LevelSelet.mp3" id="3_n71ak"]
 
 [node name="Menu" type="Node2D"]
 process_mode = 3
@@ -13,3 +14,8 @@ endless = "res://Scenes/Endless_game.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0kwhq")
+
+[node name="Background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_n71ak")
+volume_db = 6.0
+autoplay = true

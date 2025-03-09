@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cflcenfgadpc6" path="res://Scenes/levelSelector_Cave.tscn" id="6_i177y"]
 [ext_resource type="Texture2D" uid="uid://dv7e7xi1scx35" path="res://Assests/sprites/Arcade_controls.png" id="7_lb5vo"]
 [ext_resource type="Texture2D" uid="uid://cfuodkeov6dqv" path="res://Assests/sprites/parry.png" id="8_fftot"]
-[ext_resource type="PackedScene" uid="uid://d30mcut6pooad" path="res://Scenes/endless_menu.tscn" id="14_os1yx"]
+[ext_resource type="PackedScene" path="res://Scenes/endless_menu.tscn" id="14_os1yx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyoos"]
 texture = ExtResource("4_j55d5")
@@ -772,3 +772,8 @@ that walks this land!
 Only then the world will be
 SAVED!"
 horizontal_alignment = 2
+
+[node name="Background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5kd23")
+volume_db = 5.0
+autoplay = true

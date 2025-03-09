@@ -184,7 +184,7 @@ func drop():
 func die():
 	var pos = global_position 
 	$"../HP".queue_free()
-	queue_free()
+	
 	
 	var Light = light.instantiate()  
 	var a = tree.instantiate()
@@ -193,6 +193,7 @@ func die():
 	Light.global_position= pos
 	owner.add_child(a)
 	a.global_position=pos
+	queue_free()
 		
 	
 		

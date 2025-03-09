@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://o8wjy7hmj3c3" path="res://Assests/sprites/Lemon.png" id="9_8iuae"]
 [ext_resource type="Texture2D" uid="uid://c2ys5ojdsi7bp" path="res://Assests/sprites/Cherries.png" id="10_ft431"]
 [ext_resource type="PackedScene" uid="uid://n65iplsh3bpt" path="res://Scenes/levelSelector.tscn" id="10_ugivf"]
-[ext_resource type="PackedScene" uid="uid://d30mcut6pooad" path="res://Scenes/endless_menu.tscn" id="11_1pn8n"]
+[ext_resource type="PackedScene" path="res://Scenes/endless_menu.tscn" id="11_1pn8n"]
 [ext_resource type="Texture2D" uid="uid://bwdqpwtim2qyd" path="res://Assests/sprites/Orange.png" id="11_gdtqg"]
 [ext_resource type="Texture2D" uid="uid://ttpjm8u3kdso" path="res://Assests/sprites/Pear.png" id="12_o5y70"]
 
@@ -450,3 +450,8 @@ texture = ExtResource("12_o5y70")
 [node name="Node2D" parent="." instance=ExtResource("10_ugivf")]
 position = Vector2(-1, -77)
 level = "res://Scenes/Boss_Dragon_P1.tscn"
+
+[node name="Background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_142o5")
+volume_db = 5.0
+autoplay = true
