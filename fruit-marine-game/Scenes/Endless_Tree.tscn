@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://wojj8c87vo8"]
+[gd_scene load_steps=4 format=3 uid="uid://ctvic1db6xqiv"]
 
-[ext_resource type="Texture2D" uid="uid://chek8lgx0jegx" path="res://Assests/sprites/Tree.png" id="1_dcifc"]
-[ext_resource type="Script" path="res://Scenes/Endless_Tree.gd" id="2_esq4p"]
+[ext_resource type="Texture2D" uid="uid://chek8lgx0jegx" path="res://Assests/sprites/Tree.png" id="1_2acri"]
+[ext_resource type="Script" path="res://Scenes/Endless_Tree.gd" id="2_djtvk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t0nr4"]
 radius = 66.0681
 
 [node name="Sprite2D" type="Sprite2D"]
 position = Vector2(0, -1)
-texture = ExtResource("1_dcifc")
+texture = ExtResource("1_2acri")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
-script = ExtResource("2_esq4p")
+script = ExtResource("2_djtvk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_t0nr4")

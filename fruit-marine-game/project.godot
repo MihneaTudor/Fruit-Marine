@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/level_select.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Offset="*res://Scripts/Offset.gd"
+
 [display]
 
 window/size/viewport_width=1920

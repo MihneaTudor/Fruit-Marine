@@ -10,6 +10,7 @@ func _process(delta: float) -> void:
 		
 func go_to_level():
 	if Input.is_action_just_pressed("shoot"):
+		Offset.increase_int()
 		get_tree().change_scene_to_file(level)
 
 

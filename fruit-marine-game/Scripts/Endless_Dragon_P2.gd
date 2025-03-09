@@ -1,12 +1,13 @@
 extends Area2D
 
 var light = load("res://Scenes/White Circle.tscn")
-@export var tree = load("res://Scenes/Tree_pear.tscn")
+@export var tree = load("res://Scenes/Endless_Tree.tscn")
 
 @export var max_health = 100
 var current_health
 
 func _ready() -> void:
+	max_health *= Offset.get_counter()
 	current_health = max_health
 
 func _process(delta: float) -> void:

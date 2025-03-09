@@ -1,24 +1,25 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnwkxyttqpq3a"]
+[gd_scene load_steps=20 format=3 uid="uid://bb5oktnthxsdf"]
 
-[ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_hhg6o"]
-[ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_m3uq1"]
-[ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="1_ufoxo"]
-[ext_resource type="Texture2D" uid="uid://wbhox3r32lx2" path="res://Assests/sprites/HeartEmpty.png" id="3_i7jr5"]
-[ext_resource type="Texture2D" uid="uid://bmm6gw6xdlguc" path="res://Assests/sprites/HeartFull.png" id="3_sftiq"]
-[ext_resource type="Texture2D" uid="uid://cb75gfb35g4sn" path="res://Assests/sprites/TileMap.png" id="4_02lo1"]
-[ext_resource type="PackedScene" uid="uid://bvbtnribt1fc2" path="res://Scenes/Boss_Template_V2.tscn" id="6_nvwlk"]
-[ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="7_txy54"]
-[ext_resource type="PackedScene" uid="uid://djnygr48dci5i" path="res://Scenes/Tree_lemon.tscn" id="7_xeamw"]
-[ext_resource type="PackedScene" uid="uid://u45cwl43rl3d" path="res://Scenes/glont_template.tscn" id="8_iu5bh"]
-[ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="9_e34a6"]
-[ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="10_dwjeq"]
-[ext_resource type="Texture2D" uid="uid://fprfdeqapxdi" path="res://Assests/sprites/Background.png" id="13_gvugm"]
+[ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_c77j4"]
+[ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_vr3wb"]
+[ext_resource type="Texture2D" uid="uid://bmm6gw6xdlguc" path="res://Assests/sprites/HeartFull.png" id="3_bruav"]
+[ext_resource type="Texture2D" uid="uid://wbhox3r32lx2" path="res://Assests/sprites/HeartEmpty.png" id="4_pibj6"]
+[ext_resource type="Texture2D" uid="uid://cb75gfb35g4sn" path="res://Assests/sprites/TileMap.png" id="5_7ojxt"]
+[ext_resource type="PackedScene" uid="uid://bvbtnribt1fc2" path="res://Scenes/Boss_Template_V2.tscn" id="6_q5gxt"]
+[ext_resource type="Script" path="res://Scripts/Endless_game.gd" id="7_0by86"]
+[ext_resource type="PackedScene" uid="uid://dkayc8u0sdaud" path="res://Scenes/Player.tscn" id="8_5h2pw"]
+[ext_resource type="PackedScene" uid="uid://u45cwl43rl3d" path="res://Scenes/glont_template.tscn" id="9_xq668"]
+[ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="10_4g8j4"]
+[ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="11_nxe17"]
+[ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="12_i6cke"]
+[ext_resource type="Script" path="res://Scenes/Endless_death_screen.gd" id="13_7ktql"]
+[ext_resource type="Texture2D" uid="uid://fprfdeqapxdi" path="res://Assests/sprites/Background.png" id="13_mqb22"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
 font_size = 64
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7dlh"]
-texture = ExtResource("4_02lo1")
+texture = ExtResource("5_7ojxt")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -45,7 +46,7 @@ b = Vector2(-655, 25)
 distance = -133.0
 
 [node name="game" type="Node2D"]
-script = ExtResource("1_m3uq1")
+script = ExtResource("1_c77j4")
 
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -59,22 +60,22 @@ offset_right = -509.0
 offset_bottom = -316.0
 scale = Vector2(2.3477, 2.3477)
 alignment = 1
-script = ExtResource("1_hhg6o")
-HeartFull = ExtResource("3_sftiq")
-HeartEmpty = ExtResource("3_i7jr5")
+script = ExtResource("2_vr3wb")
+HeartFull = ExtResource("3_bruav")
+HeartEmpty = ExtResource("4_pibj6")
 player = NodePath("../../player")
 
 [node name="Heart1" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_sftiq")
+texture = ExtResource("3_bruav")
 
 [node name="Heart2" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_sftiq")
+texture = ExtResource("3_bruav")
 
 [node name="Heart3" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_sftiq")
+texture = ExtResource("3_bruav")
 
 [node name="Label" type="Label" parent="UI"]
 offset_left = -66.0
@@ -126,41 +127,41 @@ position = Vector2(-97, 126)
 position = Vector2(9, 0)
 shape = SubResource("WorldBoundaryShape2D_60vjs")
 
-[node name="boss" parent="." instance=ExtResource("6_nvwlk")]
+[node name="boss" parent="." instance=ExtResource("6_q5gxt")]
 position = Vector2(501, -48)
-tree = ExtResource("7_xeamw")
-max_health = 85
+script = ExtResource("7_0by86")
 
-[node name="player" parent="." instance=ExtResource("1_ufoxo")]
+[node name="player" parent="." instance=ExtResource("8_5h2pw")]
 z_index = 0
 position = Vector2(-569, 214)
 scale = Vector2(3, 3)
-bullet = ExtResource("8_iu5bh")
+bullet = ExtResource("9_xq668")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -14)
 scale = Vector2(8.6, 1)
 zoom = Vector2(1.5, 1.5)
 
-[node name="HP" parent="." instance=ExtResource("7_txy54")]
+[node name="HP" parent="." instance=ExtResource("10_4g8j4")]
 position = Vector2(0, 326.38)
 scale = Vector2(0.105, 0.02)
 
 [node name="Background music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_e34a6")
+stream = ExtResource("11_nxe17")
 volume_db = 2.0
 autoplay = true
 
-[node name="Control" parent="." instance=ExtResource("10_dwjeq")]
+[node name="Control" parent="." instance=ExtResource("12_i6cke")]
 modulate = Color(1, 1, 1, 0)
 offset_left = -1682.0
 offset_top = -1004.0
 offset_right = -1642.0
 offset_bottom = -964.0
 scale = Vector2(37.3971, 22.8272)
+script = ExtResource("13_7ktql")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(12.8323, -274.25)
 scale = Vector2(1.44704, 1.44704)
-texture = ExtResource("13_gvugm")
+texture = ExtResource("13_mqb22")
