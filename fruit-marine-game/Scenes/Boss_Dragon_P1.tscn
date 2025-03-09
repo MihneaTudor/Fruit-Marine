@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3fskvlt7m0ba"]
+[gd_scene load_steps=17 format=3 uid="uid://b3fskvlt7m0ba"]
 
 [ext_resource type="Script" path="res://Scripts/Dragon_Scene.gd" id="1_fmgl4"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_veusj"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="8_pyhny"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="9_gvabh"]
 [ext_resource type="AudioStream" uid="uid://cckxvvwk8ypo8" path="res://Scenes/70646_Dragon.mp3" id="10_e4mlh"]
+[ext_resource type="Texture2D" uid="uid://bij6h7da2co6k" path="res://Assests/sprites/BackgroundSky.png" id="12_huj02"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy038"]
 texture = ExtResource("5_evfxc")
@@ -174,3 +175,9 @@ scale = Vector2(37.3971, 22.8272)
 stream = ExtResource("10_e4mlh")
 volume_db = 4.0
 autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(3.5, -399)
+scale = Vector2(4.49653, 3.96247)
+texture = ExtResource("12_huj02")
