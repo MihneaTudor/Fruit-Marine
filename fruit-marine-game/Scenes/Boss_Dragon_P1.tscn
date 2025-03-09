@@ -176,12 +176,8 @@ stream = ExtResource("10_e4mlh")
 volume_db = 4.0
 autoplay = true
 
-<<<<<<< Updated upstream
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(3.5, -399)
 scale = Vector2(4.49653, 3.96247)
 texture = ExtResource("12_huj02")
-=======
-[node name="Bullet_Holder" type="Node" parent="."]
->>>>>>> Stashed changes

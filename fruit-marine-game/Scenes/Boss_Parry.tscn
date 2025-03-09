@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=21 format=3 uid="uid://qte2wfnry5m1"]
-=======
-[gd_scene load_steps=13 format=3 uid="uid://qte2wfnry5m1"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_2nwyv"]
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_r64qf"]
@@ -14,16 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://wq83cvgijthh" path="res://Assests/mainlev_build.png" id="6_kd61k"]
 [ext_resource type="PackedScene" uid="uid://dfkam8rdn67ih" path="res://Scenes/glont_template_cherries.tscn" id="7_03r56"]
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="7_qc6ex"]
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://7cq7wfvw3ckv" path="res://Scenes/Tree_orange.tscn" id="9_li1iw"]
 [ext_resource type="Texture2D" uid="uid://4ixq7y3t14c1" path="res://Assests/background1.png" id="11_grqnj"]
 [ext_resource type="Texture2D" uid="uid://b4bhhp47ewrv6" path="res://Assests/background2.png" id="12_l8gqq"]
 [ext_resource type="Texture2D" uid="uid://ptji4jduk0gg" path="res://Assests/background3.png" id="13_y6psg"]
 [ext_resource type="Texture2D" uid="uid://bk3k0iqokddjk" path="res://Assests/background4a.png" id="14_l60bi"]
 [ext_resource type="Texture2D" uid="uid://ckskn7dw0jla0" path="res://Assests/background4b.png" id="15_814mp"]
-=======
-[ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="9_0a7ux"]
->>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_napmg"]
 texture = ExtResource("4_q4n8s")
@@ -621,7 +613,6 @@ max_health = 20
 position = Vector2(0, 326.38)
 scale = Vector2(0.105, 0.02)
 
-<<<<<<< Updated upstream
 [node name="Background" type="Node2D" parent="."]
 z_index = -1
 position = Vector2(0, -49)
@@ -642,13 +633,3 @@ texture = ExtResource("14_l60bi")
 [node name="Sprite2D5" type="Sprite2D" parent="Background"]
 visible = false
 texture = ExtResource("15_814mp")
-=======
-[node name="Control" parent="." instance=ExtResource("9_0a7ux")]
-modulate = Color(1, 1, 1, 0)
-visibility_layer = 3
-offset_left = -1633.0
-offset_top = -951.0
-offset_right = -1593.0
-offset_bottom = -911.0
-scale = Vector2(34.9228, 20.4793)
->>>>>>> Stashed changes

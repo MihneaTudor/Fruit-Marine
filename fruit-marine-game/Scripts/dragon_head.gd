@@ -5,9 +5,8 @@ var light = load("res://Scenes/Black Circle.tscn")
 var bullet = load("res://Scenes/dragon_ammo.tscn")
 var bullet_parry = load("res://Scenes/dragon_ammo_parry.tscn")
 var beam = load("res://Scenes/beam.tscn")
-@onready var holder=$"../Bullet_Holder"
-@onready var target = $"../Player"
 
+@onready var target = $"../Player"
 @export var speed: float = 200.0
 @export var max_health = 10
 
@@ -115,14 +114,12 @@ func shoot1():
 		b= bullet_parry.instantiate()
 	b.name="BossAmmo" + str(rand + 1) + str(bullet_counter)
 	bullet_counter+=1
-	holder.add_child(b)
-	b.set_owner(holder)
+	get_tree().current_scene.add_child(b)
 	b.global_transform = $Aim_Assist.global_transform
 	
 func die():
 	var pos = global_position 
 	$"../HP".queue_free()
-	holder.queue_free()
 	queue_free()
 	
 	var Light = light.instantiate()  
