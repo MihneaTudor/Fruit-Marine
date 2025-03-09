@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://qte2wfnry5m1"]
+[gd_scene load_steps=22 format=3 uid="uid://qte2wfnry5m1"]
 
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_2nwyv"]
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_r64qf"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ptji4jduk0gg" path="res://Assests/background3.png" id="13_y6psg"]
 [ext_resource type="Texture2D" uid="uid://bk3k0iqokddjk" path="res://Assests/background4a.png" id="14_l60bi"]
 [ext_resource type="Texture2D" uid="uid://ckskn7dw0jla0" path="res://Assests/background4b.png" id="15_814mp"]
+[ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="17_y627g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_napmg"]
 texture = ExtResource("4_q4n8s")
@@ -633,3 +634,11 @@ texture = ExtResource("14_l60bi")
 [node name="Sprite2D5" type="Sprite2D" parent="Background"]
 visible = false
 texture = ExtResource("15_814mp")
+
+[node name="Control" parent="." instance=ExtResource("17_y627g")]
+modulate = Color(1, 1, 1, 0)
+offset_left = -1673.0
+offset_top = -1260.0
+offset_right = -1633.0
+offset_bottom = -1220.0
+scale = Vector2(34.5917, 35.653)

@@ -4,7 +4,8 @@ extends Control
 var ok=1
 
 func _process(delta: float) -> void:
-	if self.modulate.a==1 and ok==1:
+	print(self.modulate.a)
+	if self.modulate.a >= 0.99 and ok==1:
 		$Teleport.start()
 		ok=0
 	if $Teleport.is_stopped() and ok==0:

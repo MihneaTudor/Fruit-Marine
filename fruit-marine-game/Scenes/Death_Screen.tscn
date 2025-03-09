@@ -40,5 +40,4 @@ text = "You Died :("
 label_settings = SubResource("LabelSettings_e0yel")
 
 [node name="Teleport" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true

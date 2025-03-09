@@ -1,5 +1,8 @@
 extends Area2D
 
+var light = load("res://Scenes/White Circle.tscn")
+@export var tree = load("res://Scripts/tree.gd")
+
 @export var max_health = 100
 var current_health
 
@@ -21,10 +24,10 @@ func die():
 	$"../HP".queue_free()
 	queue_free()
 
-	#var Light = light.instantiate()
-	#var a = tree.instantiate()
-	#a.global_transform *= 3
-	#owner.add_child(Light)
-	#Light.global_position= pos
-	#owner.add_child(a)
-	#a.global_position=pos
+	var Light = light.instantiate()
+	var a = tree.instantiate()
+	a.global_transform *= 3
+	$"..".add_child(Light)
+	Light.global_position= pos
+	$"..".add_child(a)
+	a.global_position=pos + 250 * Vector2(0, 1)

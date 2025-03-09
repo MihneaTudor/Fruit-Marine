@@ -109,6 +109,7 @@ func shoot1():
 		bullet_counter+=1
 		get_tree().current_scene.add_child(b)
 		b.global_transform = $Marker_Jos.global_transform
+	b.scale.y *= -1
 
 func take_damage(amount: int):
 	if amount == 0:

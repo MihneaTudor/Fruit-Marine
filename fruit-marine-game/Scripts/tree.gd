@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 		go_to_level()
 		
 func go_to_level():
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		get_tree().change_scene_to_file(level)
 
 
