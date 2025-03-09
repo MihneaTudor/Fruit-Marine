@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceobfceipqhm1"]
+
+[ext_resource type="Texture2D" uid="uid://5tox2d5362gi" path="res://Assests/FruitMarine_Manu.png" id="1_0kwhq"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_cm8jw"]
+
+[node name="Menu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_cm8jw")
+campaign = "res://Scenes/level_select.tscn"
+endless = "res://Scenes/Endless_game.tscn"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0kwhq")

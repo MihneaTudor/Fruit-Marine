@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnwkxyttqpq3a"]
+[gd_scene load_steps=20 format=3 uid="uid://dnwkxyttqpq3a"]
 
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="1_hhg6o"]
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_m3uq1"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="9_e34a6"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="10_dwjeq"]
 [ext_resource type="Texture2D" uid="uid://fprfdeqapxdi" path="res://Assests/sprites/Background.png" id="13_gvugm"]
+[ext_resource type="PackedScene" uid="uid://cqmklogyge0km" path="res://Scenes/campaign_menu.tscn" id="14_pb5t3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
 font_size = 64
@@ -164,3 +165,8 @@ z_index = -1
 position = Vector2(12.8323, -274.25)
 scale = Vector2(1.44704, 1.44704)
 texture = ExtResource("13_gvugm")
+
+[node name="Menu" parent="." instance=ExtResource("14_pb5t3")]
+z_index = 111
+position = Vector2(0, -11.895)
+scale = Vector2(0.68, 0.68)

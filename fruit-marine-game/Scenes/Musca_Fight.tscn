@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d3yvsg8u3076b"]
+[gd_scene load_steps=29 format=3 uid="uid://d3yvsg8u3076b"]
 
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_bd126"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_vxhrm"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://5y13m7fyw3kl" path="res://Assests/bgrd_tree3.png" id="17_tgalt"]
 [ext_resource type="Texture2D" uid="uid://c47u14t5hauy0" path="res://Assests/bgrd_tree4.png" id="18_bnp2w"]
 [ext_resource type="Texture2D" uid="uid://67iwalkyx1ql" path="res://Assests/bgrd_tree5.png" id="19_b3ier"]
+[ext_resource type="PackedScene" uid="uid://cqmklogyge0km" path="res://Scenes/campaign_menu.tscn" id="21_2once"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
 font_size = 64
@@ -828,3 +829,9 @@ texture = ExtResource("18_bnp2w")
 position = Vector2(0, 49.5171)
 scale = Vector2(1.38239, 1.38239)
 texture = ExtResource("19_b3ier")
+
+[node name="Menu" parent="." instance=ExtResource("21_2once")]
+z_index = 111
+position = Vector2(0, -11.895)
+scale = Vector2(0.68, 0.68)
+campaign = "res://Scenes/level_select_2.tscn"

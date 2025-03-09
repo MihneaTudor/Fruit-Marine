@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c4ms2l4mw5c30"]
+[gd_scene load_steps=35 format=3 uid="uid://c4ms2l4mw5c30"]
 
 [ext_resource type="PackedScene" uid="uid://dp8hbwmcaog46" path="res://Scenes/player_level_select.tscn" id="1_52t02"]
 [ext_resource type="Texture2D" uid="uid://cc44ttfrh0qes" path="res://Assests/sprites/world_tileset.png" id="2_myo2x"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cflcenfgadpc6" path="res://Scenes/levelSelector_Cave.tscn" id="6_i177y"]
 [ext_resource type="Texture2D" uid="uid://dv7e7xi1scx35" path="res://Assests/sprites/Arcade_controls.png" id="7_lb5vo"]
 [ext_resource type="Texture2D" uid="uid://cfuodkeov6dqv" path="res://Assests/sprites/parry.png" id="8_fftot"]
+[ext_resource type="PackedScene" uid="uid://d30mcut6pooad" path="res://Scenes/endless_menu.tscn" id="14_os1yx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyoos"]
 texture = ExtResource("4_j55d5")
@@ -423,15 +424,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tp56e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdex2"]
 atlas = ExtResource("7_lb5vo")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kerg5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tp56e")
+"texture": SubResource("AtlasTexture_mdex2")
 }],
 "loop": true,
 "name": &"default",
@@ -512,8 +513,14 @@ position = Vector2(-38, 72)
 collision_layer = 2
 
 [node name="Camera2D" type="Camera2D" parent="playerLevelSelect"]
+z_index = 110
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="Menu" parent="playerLevelSelect/Camera2D" instance=ExtResource("14_os1yx")]
+z_index = 111
+position = Vector2(-4.76837e-07, -4)
+scale = Vector2(0.34, 0.34)
 
 [node name="Node2D2" type="Node2D" parent="."]
 z_index = 100
@@ -719,6 +726,25 @@ scale = Vector2(-10.9092, -10.9092)
 sprite_frames = SubResource("SpriteFrames_8cljr")
 autoplay = "default"
 frame_progress = 0.350674
+
+[node name="Node2D7" type="Node2D" parent="TUTORIAL"]
+position = Vector2(225, 126)
+scale = Vector2(0.230793, 0.230793)
+
+[node name="Label" type="Label" parent="TUTORIAL/Node2D7"]
+offset_left = 64.9934
+offset_top = 17.3316
+offset_right = 681.993
+offset_bottom = 186.332
+scale = Vector2(0.703156, 0.703156)
+theme_override_constants/line_spacing = -7
+theme_override_font_sizes/font_size = 64
+text = "Menu"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TUTORIAL/Node2D7"]
+position = Vector2(-86.6578, 73.6591)
+scale = Vector2(4.33289, 4.33289)
+sprite_frames = SubResource("SpriteFrames_kerg5")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 143.0

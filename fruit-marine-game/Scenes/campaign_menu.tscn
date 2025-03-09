@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqmklogyge0km"]
+
+[ext_resource type="Script" path="res://Scripts/campaign_menu.gd" id="1_v1j38"]
+[ext_resource type="Texture2D" uid="uid://d2qy718mrdmyo" path="res://Assests/FruitMarine_Manu_Campaign.png" id="2_e4s6p"]
+
+[node name="Menu" type="Node2D"]
+process_mode = 3
+visible = false
+script = ExtResource("1_v1j38")
+campaign = "res://Scenes/level_select.tscn"
+menu = "res://Scenes/main_menu.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_e4s6p")

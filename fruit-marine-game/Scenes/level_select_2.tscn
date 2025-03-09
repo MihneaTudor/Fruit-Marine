@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d3fk71a7fm4bh"]
+[gd_scene load_steps=37 format=3 uid="uid://d3fk71a7fm4bh"]
 
 [ext_resource type="PackedScene" uid="uid://dp8hbwmcaog46" path="res://Scenes/player_level_select.tscn" id="1_t1mo2"]
 [ext_resource type="AudioStream" uid="uid://3u6dyb5ec6sq" path="res://Background_LevelSelet.mp3" id="2_jg106"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ys5ojdsi7bp" path="res://Assests/sprites/Cherries.png" id="11_1wt0d"]
 [ext_resource type="Texture2D" uid="uid://bwdqpwtim2qyd" path="res://Assests/sprites/Orange.png" id="12_dxuow"]
 [ext_resource type="Texture2D" uid="uid://ttpjm8u3kdso" path="res://Assests/sprites/Pear.png" id="13_eqxjp"]
+[ext_resource type="PackedScene" uid="uid://d30mcut6pooad" path="res://Scenes/endless_menu.tscn" id="14_c1l4t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyoos"]
 texture = ExtResource("3_8l456")
@@ -504,6 +505,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdex2"]
+atlas = ExtResource("7_n36gg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l77pr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdex2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Level_Select" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [143.0]
 
@@ -516,6 +532,11 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="Menu" parent="playerLevelSelect/Camera2D" instance=ExtResource("14_c1l4t")]
+z_index = 111
+position = Vector2(-4.76837e-07, -4)
+scale = Vector2(0.34, 0.34)
 
 [node name="Background music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_jg106")
@@ -742,3 +763,22 @@ that walks this land!
 Only then the world will be
 SAVED!"
 horizontal_alignment = 2
+
+[node name="Node2D8" type="Node2D" parent="TUTORIAL"]
+position = Vector2(225, 126)
+scale = Vector2(0.230793, 0.230793)
+
+[node name="Label" type="Label" parent="TUTORIAL/Node2D8"]
+offset_left = 64.9934
+offset_top = 17.3316
+offset_right = 681.993
+offset_bottom = 186.332
+scale = Vector2(0.703156, 0.703156)
+theme_override_constants/line_spacing = -7
+theme_override_font_sizes/font_size = 64
+text = "Menu"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TUTORIAL/Node2D8"]
+position = Vector2(-86.6578, 73.6591)
+scale = Vector2(4.33289, 4.33289)
+sprite_frames = SubResource("SpriteFrames_l77pr")

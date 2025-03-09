@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bcifgeusol8j4"]
+[gd_scene load_steps=24 format=3 uid="uid://ch0wef67v6n1w"]
 
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_sdvcl"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_774ts"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bk3k0iqokddjk" path="res://Assests/background4a.png" id="15_s83qb"]
 [ext_resource type="Texture2D" uid="uid://ckskn7dw0jla0" path="res://Assests/background4b.png" id="16_tyype"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="17_dec3j"]
+[ext_resource type="PackedScene" uid="uid://cqmklogyge0km" path="res://Scenes/campaign_menu.tscn" id="18_eff20"]
+[ext_resource type="Script" path="res://Scenes/Endless_death_screen.gd" id="18_ooj0u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_napmg"]
 texture = ExtResource("5_yd8fb")
@@ -641,3 +643,9 @@ offset_top = -1260.0
 offset_right = -1633.0
 offset_bottom = -1220.0
 scale = Vector2(34.5917, 35.653)
+script = ExtResource("18_ooj0u")
+
+[node name="Menu" parent="." instance=ExtResource("18_eff20")]
+z_index = 111
+position = Vector2(0, -11.895)
+scale = Vector2(0.68, 0.68)

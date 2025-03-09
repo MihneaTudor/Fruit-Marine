@@ -75,7 +75,7 @@ func _on_body_entered(body):
 func phase_two():
 	
 	#duration = 1
-	speed=750
+	speed=625
 	$Attack.wait_time=1.5
 	
 	

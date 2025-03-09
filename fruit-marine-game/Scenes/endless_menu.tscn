@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d30mcut6pooad"]
+
+[ext_resource type="Script" path="res://Scripts/endless_menu.gd" id="1_dghas"]
+[ext_resource type="Texture2D" uid="uid://dm2faly8ewhbc" path="res://Assests/FruitMarine_Manu_Endless.png" id="2_2odo6"]
+
+[node name="Menu" type="Node2D"]
+process_mode = 3
+visible = false
+script = ExtResource("1_dghas")
+menu = "res://Scenes/main_menu.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2odo6")

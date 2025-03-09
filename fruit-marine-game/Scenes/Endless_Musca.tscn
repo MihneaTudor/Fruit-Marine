@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvre50w628f1u"]
+[gd_scene load_steps=30 format=3 uid="uid://bvre50w628f1u"]
 
 [ext_resource type="Script" path="res://Scripts/Countdown.gd" id="1_gv2h5"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_s54r5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d4fwnu0umelnu" path="res://Scenes/HealthBar.tscn" id="10_hooqj"]
 [ext_resource type="AudioStream" uid="uid://b1q2mfrbv25ml" path="res://Sounds/sounds/39196_Primu_Boss.mp3" id="11_0rorr"]
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="12_f03h4"]
+[ext_resource type="Script" path="res://Scenes/Endless_death_screen.gd" id="13_7x3q4"]
 [ext_resource type="PackedScene" uid="uid://bcepwwqbw78bp" path="res://Scenes/Musca.tscn" id="13_anvwp"]
 [ext_resource type="Script" path="res://Scripts/Endless_Musca.gd" id="14_co1e2"]
 [ext_resource type="Texture2D" uid="uid://nldj5bgqigaa" path="res://Assests/main_background.png" id="15_vo4mt"]
@@ -20,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://5y13m7fyw3kl" path="res://Assests/bgrd_tree3.png" id="18_da7gi"]
 [ext_resource type="Texture2D" uid="uid://c47u14t5hauy0" path="res://Assests/bgrd_tree4.png" id="19_bi08q"]
 [ext_resource type="Texture2D" uid="uid://67iwalkyx1ql" path="res://Assests/bgrd_tree5.png" id="20_6r385"]
+[ext_resource type="PackedScene" uid="uid://cqmklogyge0km" path="res://Scenes/campaign_menu.tscn" id="21_lxct0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82bbt"]
 font_size = 64
@@ -789,6 +791,7 @@ offset_top = -1004.0
 offset_right = -1642.0
 offset_bottom = -964.0
 scale = Vector2(37.3971, 22.8272)
+script = ExtResource("13_7x3q4")
 metadata/_edit_lock_ = true
 
 [node name="boss" parent="." instance=ExtResource("13_anvwp")]
@@ -828,3 +831,8 @@ texture = ExtResource("19_bi08q")
 position = Vector2(0, 49.5171)
 scale = Vector2(1.38239, 1.38239)
 texture = ExtResource("20_6r385")
+
+[node name="Menu" parent="." instance=ExtResource("21_lxct0")]
+z_index = 111
+position = Vector2(0, -11.895)
+scale = Vector2(0.68, 0.68)

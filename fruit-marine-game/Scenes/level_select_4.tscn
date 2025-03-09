@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://8wy2r0ib0xw7"]
+[gd_scene load_steps=15 format=3 uid="uid://8wy2r0ib0xw7"]
 
 [ext_resource type="PackedScene" uid="uid://dp8hbwmcaog46" path="res://Scenes/player_level_select.tscn" id="1_k3gym"]
 [ext_resource type="AudioStream" uid="uid://3u6dyb5ec6sq" path="res://Background_LevelSelet.mp3" id="2_142o5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://o8wjy7hmj3c3" path="res://Assests/sprites/Lemon.png" id="9_8iuae"]
 [ext_resource type="Texture2D" uid="uid://c2ys5ojdsi7bp" path="res://Assests/sprites/Cherries.png" id="10_ft431"]
 [ext_resource type="PackedScene" uid="uid://n65iplsh3bpt" path="res://Scenes/levelSelector.tscn" id="10_ugivf"]
+[ext_resource type="PackedScene" uid="uid://d30mcut6pooad" path="res://Scenes/endless_menu.tscn" id="11_1pn8n"]
 [ext_resource type="Texture2D" uid="uid://bwdqpwtim2qyd" path="res://Assests/sprites/Orange.png" id="11_gdtqg"]
 [ext_resource type="Texture2D" uid="uid://ttpjm8u3kdso" path="res://Assests/sprites/Pear.png" id="12_o5y70"]
 
@@ -388,6 +389,11 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="Menu" parent="Camera2D" instance=ExtResource("11_1pn8n")]
+z_index = 111
+position = Vector2(-4.76837e-07, -4)
+scale = Vector2(0.34, 0.34)
 
 [node name="Background music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_142o5")

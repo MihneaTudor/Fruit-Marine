@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cj28mnqsffrts"]
+[gd_scene load_steps=25 format=3 uid="uid://cj28mnqsffrts"]
 
 [ext_resource type="Script" path="res://Scripts/Endless_Dragon_Scene.gd" id="1_bxdcb"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_io1dc"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="12_0c208"]
 [ext_resource type="AudioStream" uid="uid://cckxvvwk8ypo8" path="res://Scenes/70646_Dragon.mp3" id="13_xvrr0"]
 [ext_resource type="Texture2D" uid="uid://cdp1fbbiyxiwc" path="res://Assests/Background_0.png" id="14_eb6f7"]
+[ext_resource type="Script" path="res://Scenes/Endless_death_screen.gd" id="14_nl2s7"]
+[ext_resource type="PackedScene" uid="uid://cqmklogyge0km" path="res://Scenes/campaign_menu.tscn" id="16_7j7wn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy038"]
 texture = ExtResource("5_s3dbh")
@@ -792,6 +794,7 @@ offset_top = -1004.0
 offset_right = -1642.0
 offset_bottom = -964.0
 scale = Vector2(37.3971, 22.8272)
+script = ExtResource("14_nl2s7")
 
 [node name="Background" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_xvrr0")
@@ -806,3 +809,8 @@ texture = ExtResource("14_eb6f7")
 metadata/_edit_lock_ = true
 
 [node name="Bullet_Holder" type="Node" parent="."]
+
+[node name="Menu" parent="." instance=ExtResource("16_7j7wn")]
+z_index = 111
+position = Vector2(0, -11.895)
+scale = Vector2(0.68, 0.68)

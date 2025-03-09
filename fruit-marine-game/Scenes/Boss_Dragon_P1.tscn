@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b3fskvlt7m0ba"]
+[gd_scene load_steps=23 format=3 uid="uid://b3fskvlt7m0ba"]
 
 [ext_resource type="Script" path="res://Scripts/Dragon_Scene.gd" id="1_fmgl4"]
 [ext_resource type="Script" path="res://Scripts/Inimioare_settup1.gd" id="2_veusj"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cpaxy0xmofuam" path="res://Scenes/Death_Screen.tscn" id="9_gvabh"]
 [ext_resource type="AudioStream" uid="uid://cckxvvwk8ypo8" path="res://Scenes/70646_Dragon.mp3" id="10_e4mlh"]
 [ext_resource type="Texture2D" uid="uid://cdp1fbbiyxiwc" path="res://Assests/Background_0.png" id="12_vln1f"]
+[ext_resource type="PackedScene" uid="uid://cqmklogyge0km" path="res://Scenes/campaign_menu.tscn" id="15_dgpd2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy038"]
 texture = ExtResource("5_evfxc")
@@ -803,3 +804,9 @@ texture = ExtResource("12_vln1f")
 metadata/_edit_lock_ = true
 
 [node name="Bullet_Holder" type="Node" parent="."]
+
+[node name="Menu" parent="." instance=ExtResource("15_dgpd2")]
+z_index = 111
+position = Vector2(0, -11.895)
+scale = Vector2(0.68, 0.68)
+campaign = "res://Scenes/level_select_4.tscn"

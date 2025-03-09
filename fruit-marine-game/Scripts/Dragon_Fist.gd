@@ -94,7 +94,7 @@ func drop():
 		tween.kill()  # ✅ Stop any existing tween
 
 	tween = create_tween()
-	tween.tween_property(self, "global_position", Vector2(global_position.x, 200), 1)
+	tween.tween_property(self, "global_position", Vector2(global_position.x, 200), .45)
 
 
 func move_up():
